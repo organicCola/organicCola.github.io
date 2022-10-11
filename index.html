@@ -390,10 +390,12 @@
 <h5 id="缺点-Cons"><a href="#缺点-Cons" class="headerlink" title="缺点 Cons:"></a><code>缺点</code> <code>Cons</code>:</h5><p>是标注不能在pdf文件中高亮显示。</p>
 <h5 id="缺点改进："><a href="#缺点改进：" class="headerlink" title="缺点改进："></a>缺点改进：</h5><p>但是这个问题是可以解决的，为之增加了根据<code>笔记文件</code>中的高亮信息一键在pdf中嵌入高亮和标注的功能。<br><code>org-noter-embed-all-org-note-to-pdf</code><br>这个方法可以将一个没有任何标注的pdf，嵌入<code>笔记文件</code>中的高亮。当然你无需维护这个pdf，因为所有信息都在<code>笔记文件</code>中，你随时可以生成标注。我一般做法是阅读时生成标注信息，而不把标注真正的保存进pdf中。</p>
 <h5 id="Optional-从pdf导出标注"><a href="#Optional-从pdf导出标注" class="headerlink" title="(Optional) 从pdf导出标注"></a>(Optional) 从pdf导出标注</h5><p>org-noter也支持从pdf中导出其中outline&#x2F;链接&#x2F;标注信息到<code>笔记文件</code>的功能。<br>不过导出的高亮标注的文本格式我还没有与我新添加的<code>org-noter-embed-all-org-note-to-pdf</code>功能做适配器，导出的文本不能使用我添加的<code>embed</code>功能。<br>其实以现在既然以<code>笔记文件</code>为中心，所有信息都应该是在笔记中的，从pdf中导出标注的功能可以说一般是不需要的，只有两种场景会用到：</p>
+<blockquote>
 <ol>
 <li>从旧pdf进行迁移，导入数据</li>
 <li>从pdf中导出outline<br>鉴于目前我还没有这方面硬性需求，适配工作可能会延后。</li>
 </ol>
+</blockquote>
 <h5 id="Optional-org-pdftools"><a href="#Optional-org-pdftools" class="headerlink" title="(Optional) org-pdftools"></a>(Optional) org-pdftools</h5><p>这是另一个用于补充功能的Package，可以生成一个url来进行跳转。可能大家更为熟悉这种方式，不过对我来说比较鸡肋，org-noter本身已具有同步显示功能</p>
 <h5 id="关于pdf-tools-org-noter-的具体使用，可以看另一篇"><a href="#关于pdf-tools-org-noter-的具体使用，可以看另一篇" class="headerlink" title="关于pdf-tools + org-noter 的具体使用，可以看另一篇"></a>关于<code>pdf-tools</code> + <code>org-noter</code> 的具体使用，可以看另一篇</h5><blockquote>
 <a href="/2022/10/12/Using-pdf-tools-org-noter-in-Emacs/" title="Using-pdf-tools-org-noter-in-Emacs">Using-pdf-tools-org-noter-in-Emacs</a>
