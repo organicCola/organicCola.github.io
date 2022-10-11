@@ -124,7 +124,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -135,7 +135,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -164,6 +164,257 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/12/Using-pdf-tools-org-noter-in-Emacs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="organicCola">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="organicCola's House">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | organicCola's House">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/10/12/Using-pdf-tools-org-noter-in-Emacs/" class="post-title-link" itemprop="url">Using pdf-tools & org-noter in Emacs</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-10-12 04:06:54" itemprop="dateCreated datePublished" datetime="2022-10-12T04:06:54+08:00">2022-10-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="安装pdftools"><a href="#安装pdftools" class="headerlink" title="安装pdftools"></a>安装pdftools</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(use-package pdf-tools</span><br><span class="line">  :ensure t</span><br><span class="line">  :init</span><br><span class="line">  (add-hook &#x27;after-init-hook &#x27;pdf-tools-install))</span><br><span class="line">安装org-noter</span><br><span class="line">(use-package org-noter</span><br><span class="line">  :ensure t)</span><br></pre></td></tr></table></figure>
+<h5 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h5><p>配置完之后如果打不开pdf文件还要手动M-x执行一下 ‘pdf-tools-install’</p>
+<p>原先在emacs中打开稍大点的pdf性能实在堪忧，欲Deprecated<br>但是现已解决，就是关闭pdf模式下的linum-mode, 你可以写一个mode hook，在pdf-view-mode-hook下设置linum-mode 0。</p>
+<h3 id="PDFView模式"><a href="#PDFView模式" class="headerlink" title="PDFView模式"></a>PDFView模式</h3><p>pdf-tools<br><a target="_blank" rel="noopener" href="https://github.com/vedang/pdf-tools"><code>https://github.com/vedang/pdf-tools</code></a> (PDF Tools is dead, long live PDF Tools. Development continues with this fork)<br><a target="_blank" rel="noopener" href="https://github.com/politza/pdf-tools"><code>https://github.com/politza/pdf-tools</code></a> (An older&#x2F;archived one)<br>不会产生一个可以保存使用的具体文件<br>对文件的annotaion会嵌入到pdf文件中。<br>可以实现对annotation的list展示&#x2F;插入。在list中移动光标到notes，可以让pdf滚动到对应位置，一可以关闭同步滚动<br>  <code>C-c C-a l </code>: list annotation (在pdfmode 窗口中按下)<br>  <code>C-c C-f </code>  : pdf annot list follow enable&#x2F;diable (在Annots mode窗口中按下)<br>summary：是对于pdf文件的直接操作。</p>
+<h3 id="org-noter"><a href="#org-noter" class="headerlink" title="org-noter"></a>org-noter</h3><p><a target="_blank" rel="noopener" href="https://github.com/fuxialexander/org-pdftools"><code>https://github.com/weirdNox/org-noter</code></a><br>本身不带生成quota标签，需要一些手动地改造。<br>会生成一个具体文件。里面包含了pdf文件位置。<br>可以实现插入 i&#x2F;M-i 一个在pdf中不可见的notes<br>滚动pdf使得org-noter自动光标跳转到指定位置。<br>可以通过快捷键，<code>C-M-n/p/. </code> <code>Sync selected/next/current notes</code>，在pdf跳转和note在光标，两边保持同步跳动，pdf上辉县市一个对应的位置箭头<br><code>org-noter-create-skeleton</code>: 可以将pdf中的outline&#x2F;annotaion导出，与org-pdftools共存时会有bug，会出错，但是下面的org-pdftools中使用几乎同名的方法可以成功<br>summary：提供一个与pdf文件分离的annotaion文件，human-readable。通过org-noter可以实现pdf文件与annotaion文件的同步滚动。</p>
+<h3 id="Optional-org-pdftools"><a href="#Optional-org-pdftools" class="headerlink" title="(Optional) org-pdftools"></a>(Optional) org-pdftools</h3><p><a target="_blank" rel="noopener" href="https://github.com/fuxialexander/org-pdftools"><code>https://github.com/fuxialexander/org-pdftools</code></a><br>可以在pdf文件中生成一个annotation，并且生成一个连接，这个连接记录了annotaion的具体信息比如id，因此可以具体找到他。<br>依赖pdf-tool，本身和org-noter无关，但是提供了与org-noter的一些集成，比如convert旧的org-noter为新的格式<br><code>org-noter-pdftools-create-skeleton</code>：可以将pdf中的outline&#x2F;annotaion导出，org-noter的加强版，会带anno-id<br><code>org-store-link</code> 可以创建一个annotaion，并生成复制一个当前页面的url，如果有选中文字的话会在pdf中高亮，并且url也会带上该anno-id<br><code>org-insert-last-stored-link</code> 可以已经store的命令生成的url</p>
+<p><code>org-noter-pdftools-convert-old-notes</code> 旧格式到新格式：从原先NOTER_PAGE的属性转换为带id的url的形式，并且新增一个ID属性，也就是Anno-id<br><code>org-noter-pdftools-embed-all-org-note-to-pdf</code> 在上一部转换过格式之后，可以将org文件中带anno-id的head嵌入到对应的pdf对应anno中，对于不带anno-id的head，会在该页面对应行上前面生成一个圆形白点的annotation。命令会把head所有内容一股脑儿全部写入comment中，包括properties<br>summary：提供连接本身很有用，其由于其本身并不提供一些联动的功能，连接包含的信息其实org-noter里生成的head里已经包含了，只不过org-noter的信息不是具体的annotaion，而是行的位置。</p>
+<h3 id="Summary-比较："><a href="#Summary-比较：" class="headerlink" title="Summary 比较："></a>Summary 比较：</h3><p>想要在分离的标注文件里保留必要信息，并解耦，还能够和pdf保持阅读时同步滚动，这个就是org-noter在做的事情。<br>想要包含annotaion的信息，就要记录pdf里annotaion的信息，这样虽然精确，但是这样耦合就大了，pdf里的annotaion一旦变更就和org-noter里信息对不上了，所以我想这也是org-noter没有做具体annotaion记录的原因。<br>其实想要精确的记录标注信息的话除了annotaionId还有一个信息可以记录，并且耦合性不那么大，那就是annotaion的region，也就是范围，可以作为org-noter记录行号的补充，同步仍然用行号，我们不去影响org-noter原本的逻辑，但是记录的region可以用作往pdf文件中插入标注数据，因为org-noter只能在emacs环境中使用，所以pdf文件中嵌入的标注在别的平台上使用的时候也是很重要的，嵌入的标注适用范围更广。<br>注意这里嵌入标注到pdf只是一个附加选项，因为从始至终所有标注信息都保存在一个对应的org文本文件中，这很解耦，也易于保存和进行version-control，信噪比高，你不需要保存一堆pdf标注软件为你生成的数据库或者信息，因为其中很多信息并不是我们所需要的。并且很重要的是human-readable，即使在恶劣的情况下，只要有基本的文本文件阅读设备，你的标注信息就是始终可读的。</p>
+<h3 id="魔改："><a href="#魔改：" class="headerlink" title="魔改："></a>魔改：</h3><h5 id="不过遗憾的事org-noter并没有提供这个根据org文件在pdf中同步插入标注的方法，于是我只能手动写了一个。"><a href="#不过遗憾的事org-noter并没有提供这个根据org文件在pdf中同步插入标注的方法，于是我只能手动写了一个。" class="headerlink" title="不过遗憾的事org-noter并没有提供这个根据org文件在pdf中同步插入标注的方法，于是我只能手动写了一个。"></a>不过遗憾的事org-noter并没有提供这个根据org文件在pdf中同步插入标注的方法，于是我只能手动写了一个。</h5><p><a target="_blank" rel="noopener" href="https://gist.github.com/suckerSlayer/6a755c83160c0469d961d781b49b1a55"><code>Emacs pdf-tools/ org-noter setting and modifier</code></a><br>added main features:</p>
+<table>
+<thead>
+<tr>
+<th>keybind</th>
+<th>funtion</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>M-i</code></td>
+<td>create quote automatically (and insert hightlight region data into heading property)</td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td>org noter embed all org note to pdf (have to insert hightlight region data into heading property first)</td>
+</tr>
+</tbody></table>
+<p>some mine navigation keybind</p>
+<table>
+<thead>
+<tr>
+<th>keybind</th>
+<th>funtion</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>j</code></td>
+<td>scroll page up (can’t across pages when reach edges)</td>
+</tr>
+<tr>
+<td><code>k</code></td>
+<td>scroll page down (can’t across pages when reach edges)</td>
+</tr>
+<tr>
+<td><code>n</code></td>
+<td>scroll page up (cant across pages when reach edges)</td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td>scroll page down (can across pages when reach edges)</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/12/A-notes-file-based-book-reading-notes-solution/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="organicCola">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="organicCola's House">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | organicCola's House">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/10/12/A-notes-file-based-book-reading-notes-solution/" class="post-title-link" itemprop="url">A 'notes file' based book reading notes solution - 一种以笔记文件为中心的读书笔记方案</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-10-12 01:11:54" itemprop="dateCreated datePublished" datetime="2022-10-12T01:11:54+08:00">2022-10-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="Pre"><a href="#Pre" class="headerlink" title="Pre"></a>Pre</h3><h5 id="读书做笔记，通常有以下办法"><a href="#读书做笔记，通常有以下办法" class="headerlink" title="读书做笔记，通常有以下办法"></a>读书做笔记，通常有以下办法</h5><ol>
+<li>直接在支持标注的pdf文件里插入标注，这种标注会跟嵌入在pdf文件内，用任何pdf阅读软件打开都能看到。</li>
+<li>另外新建一个文件记录笔记。</li>
+<li>使用一些读书笔记软件。<blockquote>
+<p>经典的有类似文献管理软件Zotero，较新的有像Obsidian这样的专注笔记的软件等。他们也都可以安装插件，实现各种联动和笔记的管理：像是平台间同步，生成跳转到pdf文件笔记处的url链接等。</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<h5 id="古早使用Zotero来做笔记的困惑和思索-Zotero-Using-Annotation-organization-think"><a href="#古早使用Zotero来做笔记的困惑和思索-Zotero-Using-Annotation-organization-think" class="headerlink" title="古早使用Zotero来做笔记的困惑和思索 Zotero Using: Annotation organization think"></a>古早使用Zotero来做笔记的困惑和思索 Zotero Using: Annotation organization think</h5><p>zotero自带的add notes from annotation可以实现导出笔记功能，除了page外甚至还会带上annotaion的具体位置。<br>另外最近摸索了下pdf中annotaion管理的问题：</p>
+<ol>
+<li>如果在zotero里标注，标注只能在zotero里查看，是没有写入到pdf文件里的，而是储存在zotero自己的数据库里；</li>
+<li>如果是系统的预览app或一些其他pdf阅读器标注是会写入到pdf文件里的，任何阅读器都能查看到；</li>
+<li>将标注嵌在pdf文档中的缺点是其文件大小肉眼可见地变大了，一两个标注就能增加上100kb+，但其实有效信息也就几十个字而已。</li>
+<li>利用zotero来写标注是实现了pdf文件和标注分离，但是信息又嵌在了zotero中，你需要维护zotero的整个数据库保证标注安全</li>
+<li>如果要将标注剥离出来成为单独的文件那么就可以用生成md&#x2F;txt文件的方法，</li>
+<li>剥离md文件是很好的方案，但是也带来了一些问题：md文件中的标注可以通过点击里面的链接来跳转到zotero，但是反过来很难实现在zotero里阅读的同时让md也实时地滚动到对应处的笔记</li>
+</ol>
+</blockquote>
+<h5 id="在说我的痛点之前，先总结一下："><a href="#在说我的痛点之前，先总结一下：" class="headerlink" title="在说我的痛点之前，先总结一下："></a>在说我的痛点之前，先总结一下：</h5><ol>
+<li>首先将标注直接写在pdf文件中似乎是个不错的选择，兼容性好，对于各种支持pdf标准标注的软件来说都可以看到。但是pdf二进制文件的性质使得其不方便进行变更的同步，一处改动则需要同步更新这个文件才行。我需要一种可以解耦笔记与原pdf文件本身的方案</li>
+<li>另外新建一个笔记的方法则进行了彻底地pdf文件与笔记的解耦，读书笔记与pdf本身没有直接的联系，我只需要管理笔记文件本身的更新。这是正确的方向。但是解耦的代价是笔记本身失去了与pdf本身的关联，笔记的内容与pdf文件本身的关联全靠文字提示与大脑记忆。于是诞生了需要在笔记中插入pdf内容标记索引的需求，形式一般是一定格式的文字，例如第几行第几页；也可以是一个url。目的是可以快速跳转到对应的pdf位置，帮助回忆。可以说这种思路没有问题。</li>
+<li>事实上，三方软件及其插件基本上都是第二点末尾提到的思路。比如Zotero将标注的数据存在了自己的数据库里，可以在自己软件内进行平台间的同步，但是这时的笔记还只是标注，与pdf密不可分，距离笔记的形态还是有距离，所以一般还是会通过导出笔记到专门的笔记软件如Obsidian中进行管理。Obsidian内也可以通过插件将pdf读书集成到应用中，实现一边读书一边做笔记并生成笔记链接url。</li>
+</ol>
+<h5 id="下面说说我的痛点："><a href="#下面说说我的痛点：" class="headerlink" title="下面说说我的痛点："></a>下面说说我的痛点：</h5><p>总体上我准备采用第三种方案，在单独的文件中做笔记，并通过软件将pdf标注生成url方便索引。</p>
+<ol>
+<li>但是看了下现有的一些方案，基本上这种生成的索引都是单向的，即可以从url跳转到pdf文件处，但是无法在pdf读到那个地方时候跳到笔记文件对应处。</li>
+<li>如果在pdf文件中同步直接标注，则可以直接在阅读pdf文件时候同步看到当前对应的高亮和标注。但是这又引入我上面说到的pdf直接标注的缺点了，你需要同时管理其中的pdf二进制文件，工作量又增加了。</li>
+<li>也有些Obsidian三方可能会采取这样一种策略，将高亮标注信息保存在插件内部数据库：当你在通过这个插件阅读pdf时，标注一条数据会在生成的url索引中，插入‘插件内部数据库关于这条高亮的信息’，这样就既不用维护pdf文件，又能在pdf中显示高亮数据了。（Zotero进行标注时采用的就是这种方法，将数据全部存于Zotero本地的数据库内。）但是要注意，不用维护pdf文件是好处，带来的问题是你相当于需要维护这个插件的数据库，数据库丢失了或者数据出问题了，标注信息也就丢失了。当然维护数据自然是记笔记需要付出的代价，但是相比与一个human-unreadable数据库，我更愿意维护一个human-readable单个笔记文件。可读是很重要的，即使在最恶劣的情况下，系统坏掉，但是由于肉眼可读，只要可以打开这个笔记文本文件本身，那你的数据就可以恢复。当然对于大型系统来说数据库系统无疑是高效于文件系统的，只是在我的笔记系统里，这是是不适合的而已。</li>
+</ol>
+<h3 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a>Solution：</h3><h5 id="那么首先归纳我的需求"><a href="#那么首先归纳我的需求" class="headerlink" title="那么首先归纳我的需求"></a>那么首先归纳我的需求</h5><ol>
+<li>以<code>笔记文件</code>为中心，笔记存于pdf文件之外，<code>一切</code>标注数据存于单个文本<code>笔记文件</code>中；</li>
+<li>在阅读的时候可以自动同步展示<code>笔记文件</code>中对应笔记。当然在<code>笔记文件</code>中也可以同步展示pdf中对应的引用处。</li>
+<li>(附加)从<code>笔记文件</code>中获取<code>数据</code>，并在在pdf中展示高亮。</li>
+</ol>
+<h5 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h5><p>几经查找发现了一个比较合适的方案。<br><code>EMacs</code>下的<code>pdf-tools</code> + <code>org-noter</code>， 满足了需求i<code>1</code>和<code>2</code>中annotation剥离和同步阅读的问题。<br>所有我需要的信息保存在一个单独的org文件中，阅读PDF时,<code>笔记文件</code>中的标注会自动同步滚动到对应处。</p>
+<h5 id="缺点-Cons"><a href="#缺点-Cons" class="headerlink" title="缺点 Cons:"></a><code>缺点</code> <code>Cons</code>:</h5><p>是标注不能在pdf文件中高亮显示。</p>
+<h5 id="缺点改进："><a href="#缺点改进：" class="headerlink" title="缺点改进："></a>缺点改进：</h5><p>但是这个问题是可以解决的，为之增加了根据<code>笔记文件</code>中的高亮信息一键在pdf中嵌入高亮和标注的功能。<br><code>org-noter-embed-all-org-note-to-pdf</code><br>这个方法可以将一个没有任何标注的pdf，嵌入<code>笔记文件</code>中的高亮。当然你无需维护这个pdf，因为所有信息都在<code>笔记文件</code>中，你随时可以生成标注。我一般做法是阅读时生成标注信息，而不把标注真正的保存进pdf中。</p>
+<h5 id="Optional-从pdf导出标注"><a href="#Optional-从pdf导出标注" class="headerlink" title="(Optional) 从pdf导出标注"></a>(Optional) 从pdf导出标注</h5><p>org-noter也支持从pdf中导出其中outline&#x2F;链接&#x2F;标注信息到<code>笔记文件</code>的功能。<br>不过导出的高亮标注的文本格式我还没有与我新添加的<code>org-noter-embed-all-org-note-to-pdf</code>功能做适配器，导出的文本不能使用我添加的<code>embed</code>功能。<br>其实以现在既然以<code>笔记文件</code>为中心，所有信息都应该是在笔记中的，从pdf中导出标注的功能可以说一般是不需要的，只有两种场景会用到：</p>
+<ol>
+<li>从旧pdf进行迁移，导入数据</li>
+<li>从pdf中导出outline<br>鉴于目前我还没有这方面硬性需求，适配工作可能会延后。</li>
+</ol>
+<h5 id="Optional-org-pdftools"><a href="#Optional-org-pdftools" class="headerlink" title="(Optional) org-pdftools"></a>(Optional) org-pdftools</h5><p>这是另一个用于补充功能的Package，可以生成一个url来进行跳转。可能大家更为熟悉这种方式，不过对我来说比较鸡肋，org-noter本身已具有同步显示功能</p>
+<h5 id="关于pdf-tools-org-noter-的具体使用，可以看另一篇"><a href="#关于pdf-tools-org-noter-的具体使用，可以看另一篇" class="headerlink" title="关于pdf-tools + org-noter 的具体使用，可以看另一篇"></a>关于<code>pdf-tools</code> + <code>org-noter</code> 的具体使用，可以看另一篇</h5><blockquote>
+<a href="/2022/10/12/Using-pdf-tools-org-noter-in-Emacs/" title="Using-pdf-tools-org-noter-in-Emacs">Using-pdf-tools-org-noter-in-Emacs</a>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1162,236 +1413,6 @@ end
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">git <span class="built_in">clone</span> **************************</span></span><br><span class="line">Connection to ssh.bitbucket.com port 22 [tcp/ssh] succeeded!</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 
 <h3 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h3><p>注意终端里各个程序不一定都会走全局代理，这个ssh就是典型，需要看具体应用的代理方式是如何设置的。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/08/06/coding-iOS-Vim/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="organicCola">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="organicCola's House">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | organicCola's House">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/06/coding-iOS-Vim/" class="post-title-link" itemprop="url">Use Vim for iOS project development</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-08-06 21:58:30" itemprop="dateCreated datePublished" datetime="2021-08-06T21:58:30+08:00">2021-08-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="iOS-project-Editor"><a href="#iOS-project-Editor" class="headerlink" title="iOS project Editor"></a>iOS project Editor</h2><p>一般对于iOS开发者来说Xcode是进行开发的首选工具，这也是苹果官方的开发工具。<br>如果是非专职iOS开发者，那么也有极大的概率使用着其他开发工具。比如写flutter或者rn这种非native app，则可能会直接使用VSCode；对于native app除了vscode也有其他选择，比如jetBrains家的App Code，已经做的非常好，甚至集成了CocoaPods，不过AppCode貌似是收费的。<br>如果你是Vim爱好者，那么很容易在Xcode以外的这些工具中找到Vim插件，体验不错，常用的功能都有。<br>对于Xcode官方也已经在Xcode13中提供了Vim keybind支持，不过很基础，一些常用的功能体面没有提供，使用使用体验与原生Vim存在差距。  </p>
-<h2 id="Language-Server-Protocol"><a href="#Language-Server-Protocol" class="headerlink" title="Language Server Protocol"></a>Language Server Protocol</h2><p>其实现阶段在类似sublime、vscode、Emacs中跨行编辑代码并不是难事，多亏了微软主导的<a target="_blank" rel="noopener" href="https://langserver.org/">Language Server Protocol</a>，每个语言的开发者据此协议提供自己语言服务器以对外提供接口，然后编辑器只需要遵循这个协议即可轻松实现对各种语言的对接，编辑器只需要做好自己的使用体验，界面，输入优化等。</p>
-<pre><code class="highlight mermaid">graph TD;
-S(Swift) --&gt; D;
-A(Java) --&gt; D;
-B(JavaScript) --&gt; D;
-C(C/C++) --&gt; D;
-D(Language Server Protocol) --&gt; E(Vim);
-D --&gt; F(Sublime);
-D --&gt; G(VSCode);
-D --&gt; H(Emacs);</code></pre>
-<h2 id="Use-Vim-for-iOS-project-development"><a href="#Use-Vim-for-iOS-project-development" class="headerlink" title="Use Vim for iOS project development"></a>Use Vim for iOS project development</h2><p>而本文要讨论的则是一个更加朴素的环境，终端中的Vim，在终端中使用Vim来进行iOS工程的编写。<br>虽说是终端编写，但并不是说不需要Xcode了，Vim中做的只是编辑代码，仍需要使用Xcode来进行编译和运行以及Debug。<br>最终达成的效果是，用Xcode新建一个工程，编译，生成编译日志并将其解析为可供lsp-server使用的数据，在Vim中调用lsp-server提供自动补全、定义跳转等支持，在Vim中进行代码编写。</p>
-<pre><code class="highlight mermaid">graph TD;
-A(XcodeCompile/Debug)--&gt; |compile| B;
-
-subgraph prepare info for Language Server
-B(compile log)-.-&gt; |Objective-C| X;
-B(compile log)--&gt; |Swift| Xa;
-X(xcpretty/XCCompilationDB process) -.-&gt; |compile_commands.json| L;
-Xa(Xcode Build Server process) --&gt; |.compile| L;
-end
-
-subgraph Vim-lsp&lt;=&gt;Language server Interactive
-L((Vim-lsp)) -.- |json-compilation-database| Cl(Clangd);
-L --- |Build Server Protocol| S(Sourcekit);
-end
-
-L === |LSP support: autoCompleteion/goToDefinition...| C;
-C((Coding In Vim));</code></pre>
-<h2 id="A-simple-Screencast"><a href="#A-simple-Screencast" class="headerlink" title="A simple Screencast"></a>A simple Screencast</h2><script id="asciicast-jVh32tJK83zPuX3wZjR3MoVLL" src="https://asciinema.org/a/jVh32tJK83zPuX3wZjR3MoVLL.js" async></script>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/01/Mermaid-display-adaption/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="organicCola">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="organicCola's House">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | organicCola's House">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/07/01/Mermaid-display-adaption/" class="post-title-link" itemprop="url">Mermaid display adaption</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2021-07-01 15:40:06" itemprop="dateCreated datePublished" datetime="2021-07-01T15:40:06+08:00">2021-07-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="Pre"><a href="#Pre" class="headerlink" title="Pre"></a>Pre</h3><p>Mermaid语法简单，使用方便，但是对具体布局的调整比较难以把控，在一些专业画图软件里的布局在mermaid里也难以实习。只能遵循一些规则尽量让布局符合我们的预期。</p>
-<h3 id="关于mermaid布局"><a href="#关于mermaid布局" class="headerlink" title="关于mermaid布局"></a>关于mermaid布局</h3><ol>
-<li>尽量使用TB而不是TD，TD不一定能按照top&#x2F;bottom排列</li>
-<li>flowchart 支持嵌套&#x2F; graph 不支持嵌套subgraph</li>
-<li>代码顺序不影响拓扑关系，但是有可能会影响布局。</li>
-<li>flowchart TB 支持 subgpaph direction BT，而graph TB不支持</li>
-<li>mermaid 中只要是相邻元素的连线方向会尽量保持与主方向。虽然拓扑不受影响，但是布局会受影响的，必须时刻注意，否则被强行调整元素位置可能会生成非期望的布局；未与外界直接相连的subgraph内的元素，可以通过direction控制方向。</li>
-<li>注意元素之间在没有连线的情况下，默认与主轴交错防抢排列，并且默认顺序与添加语句顺序是颠倒的，最后添加的排在最前面；</li>
-<li>mermaid连线时可能会强行调整元素位置，目前发现以下一些原则：</li>
-</ol>
-<ul>
-<li>会将流程靠前的元素放到主轴方向的开端</li>
-<li>位置靠前的元素以及其内部元素更不容易被调整位置</li>
-<li>会尽量调整元素布局以使得连线最短</li>
-</ul>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">```mermaid</span><br><span class="line">flowchart　TB</span><br><span class="line">subgraph a[Right]</span><br><span class="line">  direction TB</span><br><span class="line">  A&#x27; --&gt; B&#x27; --&gt; C&#x27; --&gt; D&#x27; --&gt; A&#x27;</span><br><span class="line">end</span><br><span class="line">subgraph b[Left]</span><br><span class="line">  direction TB</span><br><span class="line">  A --&gt; B --&gt; C --&gt; D</span><br><span class="line">end</span><br><span class="line">A&#x27; --&gt; D</span><br><span class="line">A --&gt; D&#x27;</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-
-<pre><code class="highlight mermaid">flowchart　TB
-subgraph a[Right]
-  direction TB
-  A&#x27; --&gt; B&#x27; --&gt; C&#x27; --&gt; D&#x27; --&gt; A&#x27;
-end
-subgraph b[Left]
-  direction TB
-  A --&gt; B --&gt; C --&gt; D
-end
-A&#x27; --&gt; D
-A --&gt; D&#x27;</code></pre>
-
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><ul>
-<li>由于a的布局位置考后，更容易被调整位置，并且其内部是首尾相接的结构，允许其调整元素顺序而拓扑结构不变，为了使A –&gt; D’ 连线尽量短，会把D’调整位置到顶端，所以看起来元素顺序有点不符合预期。</li>
-<li>subgraph a 和 subgraph b 如果交换代码位置，subgraph a 由于代码位置靠后，所以布局靠前，更不易被调整位置，所以abcd按照主轴方向依次向下排列，这样看起来顺眼多了。</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">```mermaid</span><br><span class="line">flowchart　TB</span><br><span class="line">subgraph b[Left]</span><br><span class="line">  direction TB</span><br><span class="line">  A --&gt; B --&gt; C --&gt; D</span><br><span class="line">end</span><br><span class="line">subgraph a[Right]</span><br><span class="line">  direction TB</span><br><span class="line">  A&#x27; --&gt; B&#x27; --&gt; C&#x27; --&gt; D&#x27; --&gt; A&#x27;</span><br><span class="line">end</span><br><span class="line">A&#x27; --&gt; D</span><br><span class="line">A --&gt; D&#x27;</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
-
-<pre><code class="highlight mermaid">flowchart　TB
-subgraph b[Left]
-  direction TB
-  A --&gt; B --&gt; C --&gt; D
-end
-subgraph a[Right]
-  direction TB
-  A&#x27; --&gt; B&#x27; --&gt; C&#x27; --&gt; D&#x27; --&gt; A&#x27;
-end
-A&#x27; --&gt; D
-A --&gt; D&#x27;</code></pre>
 
       
     </div>
