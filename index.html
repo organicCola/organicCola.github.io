@@ -387,8 +387,14 @@
 <li>(附加)从<code>笔记文件</code>中获取<code>数据</code>，并在在pdf中展示高亮。</li>
 </ol>
 <h5 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h5><p>几经查找发现了一个比较合适的方案。<br><code>EMacs</code>下的<code>pdf-tools</code> + <code>org-noter</code>， 满足了需求i<code>1</code>和<code>2</code>中annotation剥离和同步阅读的问题。<br>所有我需要的信息保存在一个单独的org文件中，阅读PDF时,<code>笔记文件</code>中的标注会自动同步滚动到对应处。</p>
-<h5 id="缺点-Cons"><a href="#缺点-Cons" class="headerlink" title="缺点 Cons:"></a><code>缺点</code> <code>Cons</code>:</h5><p>是标注不能在pdf文件中高亮显示。</p>
-<h5 id="缺点改进："><a href="#缺点改进：" class="headerlink" title="缺点改进："></a>缺点改进：</h5><p>但是这个问题是可以解决的，为之增加了根据<code>笔记文件</code>中的高亮信息一键在pdf中嵌入高亮和标注的功能。<br><code>org-noter-embed-all-org-note-to-pdf</code><br>这个方法可以将一个没有任何标注的pdf，嵌入<code>笔记文件</code>中的高亮。当然你无需维护这个pdf，因为所有信息都在<code>笔记文件</code>中，你随时可以生成标注。我一般做法是阅读时生成标注信息，而不把标注真正的保存进pdf中。</p>
+<h5 id="缺点-Cons"><a href="#缺点-Cons" class="headerlink" title="缺点 Cons:"></a><code>缺点</code> <code>Cons</code>:</h5><ol>
+<li>是标注不能在pdf文件中高亮显示。</li>
+<li>Emacs是桌面全平台，但是没有iOS端</li>
+</ol>
+<h5 id="缺点改进："><a href="#缺点改进：" class="headerlink" title="缺点改进："></a>缺点改进：</h5><ol>
+<li><code>缺点1</code>的问题是可以解决的，为之增加了根据<code>笔记文件</code>中的高亮信息一键在pdf中嵌入高亮和标注的功能。<br><code>org-noter-embed-all-org-note-to-pdf</code><br>这个方法可以将一个没有任何标注的pdf，嵌入<code>笔记文件</code>中的高亮。当然你无需维护这个pdf，因为所有信息都在<code>笔记文件</code>中，你随时可以生成标注。我一般做法是阅读时生成标注信息，而不把标注真正的保存进pdf中。</li>
+<li><code>缺点2</code>的问题目前只能workaround<br>虽然不能完全解决，但是因为在移动平台上使用得不多，可以在桌面端将标注嵌入pdf文件，因为pdf文件的标注的兼容性，在iOS上自然是可以查看的。不过，想要进行标注的修改更新的话还是要到<code>笔记文件</code>中更新。<br>其实想要实现更新在pdf文件中更新来同步更新标注，可以像<code>缺点1</code>那样，修改org-noter从pdf导出标注的方法，将其导出数据格式适配为包含高亮region数据的格式。这样更新了pdf数据后，将其导出到<code>笔记文件</code>，实现同步。这样就实现双向无缝同步了。<br>但是习惯上因为很少在移动端阅读，所以这个需求不是很迫切，适配工作会延后。</li>
+</ol>
 <h3 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h3><p><img src="/../imgs/org-noter_demo.gif" alt="org-noter_demo"><br>demo content:</p>
 <ol>
 <li>sync pdf display to current heading note</li>
@@ -396,11 +402,29 @@
 <li>sync notes display to current pdf view page automatically</li>
 <li>embed notes from notes file to pdf file (personal impelmentation)</li>
 </ol>
+<pre><code class="highlight mermaid">graph TD;
+A(pdf) --- O
+B(pdf) --- O
+C(pdf) --- O
+subgraph E[org-noter in Emacs]
+O(org-file) 
+end
+O --- |sync| G[(Git repository)]
+Oa --- |sync| G[(Git repository)]
+subgraph Ea[org-noter in Emacs]
+Oa(org-file) 
+end
+Oa --- H(pdf)
+Oa --- I(pdf)
+Oa --- J(pdf)
+</code></pre>
+
 <h5 id="Optional-从pdf导出标注"><a href="#Optional-从pdf导出标注" class="headerlink" title="(Optional) 从pdf导出标注"></a>(Optional) 从pdf导出标注</h5><p>org-noter也支持从pdf中导出其中outline&#x2F;链接&#x2F;标注信息到<code>笔记文件</code>的功能。<br>不过导出的高亮标注的文本格式我还没有与我新添加的<code>org-noter-embed-all-org-note-to-pdf</code>功能做适配器，导出的文本不能使用我添加的<code>embed</code>功能。<br>其实以现在既然以<code>笔记文件</code>为中心，所有信息都应该是在笔记中的，从pdf中导出标注的功能可以说一般是不需要的，只有两种场景会用到：</p>
 <blockquote>
 <ol>
 <li>从旧pdf进行迁移，导入数据</li>
-<li>从pdf中导出outline<br>鉴于目前我还没有这方面硬性需求，适配工作可能会延后。</li>
+<li>从pdf中导出outline</li>
+<li>在移动平台上直接对pdf进行了更新，于是从pdf中导出数据到<code>笔记文件</code>，进行数据更新。<br>鉴于目前我还没有这方面需求不是很迫切，适配工作会延后。</li>
 </ol>
 </blockquote>
 <h5 id="Optional-org-pdftools"><a href="#Optional-org-pdftools" class="headerlink" title="(Optional) org-pdftools"></a>(Optional) org-pdftools</h5><p>这是另一个用于补充功能的Package，可以生成一个url来进行跳转。可能大家更为熟悉这种方式，不过对我来说比较鸡肋，org-noter本身已具有同步显示功能</p>
