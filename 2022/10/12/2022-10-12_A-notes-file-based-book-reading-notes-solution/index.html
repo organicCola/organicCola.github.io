@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Pre读书做笔记，通常有以下办法 直接在支持标注的pdf文件里插入标注，这种标注会跟嵌入在pdf文件内，用任何pdf阅读软件打开都能看到。 另外新建一个文件记录笔记。 使用一些读书笔记软件。 经典的有类似文献管理软件Zotero，较新的有像Obsidian这样的专注笔记的软件等。他们也都可以安装插件，实现各种联动和笔记的管理：像是平台间同步，生成跳转到pdf文件笔记处的url链接等。     古早">
+<meta property="og:type" content="article">
+<meta property="og:title" content="A &#39;notes file&#39; based book reading notes solution - 一种以笔记文件为中心的读书笔记方案">
+<meta property="og:url" content="http://example.com/2022/10/12/2022-10-12_A-notes-file-based-book-reading-notes-solution/index.html">
+<meta property="og:site_name" content="organicCola&#39;s House">
+<meta property="og:description" content="Pre读书做笔记，通常有以下办法 直接在支持标注的pdf文件里插入标注，这种标注会跟嵌入在pdf文件内，用任何pdf阅读软件打开都能看到。 另外新建一个文件记录笔记。 使用一些读书笔记软件。 经典的有类似文献管理软件Zotero，较新的有像Obsidian这样的专注笔记的软件等。他们也都可以安装插件，实现各种联动和笔记的管理：像是平台间同步，生成跳转到pdf文件笔记处的url链接等。     古早">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/imgs/org-noter_demo.gif">
+<meta property="article:published_time" content="2022-10-12T01:11:54.000Z">
+<meta property="article:modified_time" content="2025-12-18T11:25:00.264Z">
+<meta property="article:author" content="organicCola">
+<meta property="article:tag" content="notes">
+<meta property="article:tag" content="Emacs">
+<meta property="article:tag" content="Book Reading">
+<meta property="article:tag" content="org-noter，PDFTools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/imgs/org-noter_demo.gif">
+
+
+<link rel="canonical" href="http://example.com/2022/10/12/2022-10-12_A-notes-file-based-book-reading-notes-solution/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/10/12/2022-10-12_A-notes-file-based-book-reading-notes-solution/","path":"2022/10/12/2022-10-12_A-notes-file-based-book-reading-notes-solution/","title":"A 'notes file' based book reading notes solution - 一种以笔记文件为中心的读书笔记方案"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>A 'notes file' based book reading notes solution - 一种以笔记文件为中心的读书笔记方案 | organicCola's House</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">organicCola's House</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Organic cola is good for your happiness</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pre"><span class="nav-number">1.</span> <span class="nav-text">Pre</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%BB%E4%B9%A6%E5%81%9A%E7%AC%94%E8%AE%B0%EF%BC%8C%E9%80%9A%E5%B8%B8%E6%9C%89%E4%BB%A5%E4%B8%8B%E5%8A%9E%E6%B3%95"><span class="nav-number">1.0.1.</span> <span class="nav-text">读书做笔记，通常有以下办法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8F%A4%E6%97%A9%E4%BD%BF%E7%94%A8Zotero%E6%9D%A5%E5%81%9A%E7%AC%94%E8%AE%B0%E7%9A%84%E5%9B%B0%E6%83%91%E5%92%8C%E6%80%9D%E7%B4%A2-Zotero-Using-Annotation-organization-think"><span class="nav-number">1.0.2.</span> <span class="nav-text">古早使用Zotero来做笔记的困惑和思索 Zotero Using: Annotation organization think</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9C%A8%E8%AF%B4%E6%88%91%E7%9A%84%E7%97%9B%E7%82%B9%E4%B9%8B%E5%89%8D%EF%BC%8C%E5%85%88%E6%80%BB%E7%BB%93%E4%B8%80%E4%B8%8B%EF%BC%9A"><span class="nav-number">1.0.3.</span> <span class="nav-text">在说我的痛点之前，先总结一下：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%8B%E9%9D%A2%E8%AF%B4%E8%AF%B4%E6%88%91%E7%9A%84%E7%97%9B%E7%82%B9%EF%BC%9A"><span class="nav-number">1.0.4.</span> <span class="nav-text">下面说说我的痛点：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">Solution：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%82%A3%E4%B9%88%E9%A6%96%E5%85%88%E5%BD%92%E7%BA%B3%E6%88%91%E7%9A%84%E9%9C%80%E6%B1%82"><span class="nav-number">2.0.1.</span> <span class="nav-text">那么首先归纳我的需求</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">2.0.2.</span> <span class="nav-text">解决方案</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9-Cons"><span class="nav-number">2.0.3.</span> <span class="nav-text">缺点 Cons:</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9%E6%94%B9%E8%BF%9B%EF%BC%9A"><span class="nav-number">2.0.4.</span> <span class="nav-text">缺点改进：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Demo"><span class="nav-number">3.</span> <span class="nav-text">Demo</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Optional-%E4%BB%8Epdf%E5%AF%BC%E5%87%BA%E6%A0%87%E6%B3%A8"><span class="nav-number">3.0.1.</span> <span class="nav-text">(Optional) 从pdf导出标注</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Optional-org-pdftools"><span class="nav-number">3.0.2.</span> <span class="nav-text">(Optional) org-pdftools</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Epdf-tools-org-noter-%E7%9A%84%E5%85%B7%E4%BD%93%E4%BD%BF%E7%94%A8%EF%BC%8C%E5%8F%AF%E4%BB%A5%E7%9C%8B%E5%8F%A6%E4%B8%80%E7%AF%87"><span class="nav-number">3.0.3.</span> <span class="nav-text">关于pdf-tools + org-noter 的具体使用，可以看另一篇</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">organicCola</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">103</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/12/2022-10-12_A-notes-file-based-book-reading-notes-solution/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="organicCola">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="organicCola's House">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="A 'notes file' based book reading notes solution - 一种以笔记文件为中心的读书笔记方案 | organicCola's House">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          A 'notes file' based book reading notes solution - 一种以笔记文件为中心的读书笔记方案
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-10-12 01:11:54" itemprop="dateCreated datePublished" datetime="2022-10-12T01:11:54+00:00">2022-10-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="Pre"><a href="#Pre" class="headerlink" title="Pre"></a>Pre</h3><h5 id="读书做笔记，通常有以下办法"><a href="#读书做笔记，通常有以下办法" class="headerlink" title="读书做笔记，通常有以下办法"></a>读书做笔记，通常有以下办法</h5><ol>
+<li>直接在支持标注的pdf文件里插入标注，这种标注会跟嵌入在pdf文件内，用任何pdf阅读软件打开都能看到。</li>
+<li>另外新建一个文件记录笔记。</li>
+<li>使用一些读书笔记软件。<blockquote>
+<p>经典的有类似文献管理软件Zotero，较新的有像Obsidian这样的专注笔记的软件等。他们也都可以安装插件，实现各种联动和笔记的管理：像是平台间同步，生成跳转到pdf文件笔记处的url链接等。</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<h5 id="古早使用Zotero来做笔记的困惑和思索-Zotero-Using-Annotation-organization-think"><a href="#古早使用Zotero来做笔记的困惑和思索-Zotero-Using-Annotation-organization-think" class="headerlink" title="古早使用Zotero来做笔记的困惑和思索 Zotero Using: Annotation organization think"></a>古早使用Zotero来做笔记的困惑和思索 Zotero Using: Annotation organization think</h5><p>zotero自带的add notes from annotation可以实现导出笔记功能，除了page外甚至还会带上annotaion的具体位置。<br>另外最近摸索了下pdf中annotaion管理的问题：</p>
+<ol>
+<li>如果在zotero里标注，标注只能在zotero里查看，是没有写入到pdf文件里的，而是储存在zotero自己的数据库里；</li>
+<li>如果是系统的预览app或一些其他pdf阅读器标注是会写入到pdf文件里的，任何阅读器都能查看到；</li>
+<li>将标注嵌在pdf文档中的缺点是其文件大小肉眼可见地变大了，一两个标注就能增加上100kb+，但其实有效信息也就几十个字而已。</li>
+<li>利用zotero来写标注是实现了pdf文件和标注分离，但是信息又嵌在了zotero中，你需要维护zotero的整个数据库保证标注安全</li>
+<li>如果要将标注剥离出来成为单独的文件那么就可以用生成md&#x2F;txt文件的方法，</li>
+<li>剥离md文件是很好的方案，但是也带来了一些问题：md文件中的标注可以通过点击里面的链接来跳转到zotero，但是反过来很难实现在zotero里阅读的同时让md也实时地滚动到对应处的笔记</li>
+</ol>
+</blockquote>
+<h5 id="在说我的痛点之前，先总结一下："><a href="#在说我的痛点之前，先总结一下：" class="headerlink" title="在说我的痛点之前，先总结一下："></a>在说我的痛点之前，先总结一下：</h5><ol>
+<li>首先将标注直接写在pdf文件中似乎是个不错的选择，兼容性好，对于各种支持pdf标准标注的软件来说都可以看到。但是pdf二进制文件的性质使得其不方便进行变更的同步，一处改动则需要同步更新这个文件才行。我需要一种可以解耦笔记与原pdf文件本身的方案</li>
+<li>另外新建一个笔记的方法则进行了彻底地pdf文件与笔记的解耦，读书笔记与pdf本身没有直接的联系，我只需要管理笔记文件本身的更新。这是正确的方向。但是解耦的代价是笔记本身失去了与pdf本身的关联，笔记的内容与pdf文件本身的关联全靠文字提示与大脑记忆。于是诞生了需要在笔记中插入pdf内容标记索引的需求，形式一般是一定格式的文字，例如第几行第几页；也可以是一个url。目的是可以快速跳转到对应的pdf位置，帮助回忆。可以说这种思路没有问题。</li>
+<li>事实上，三方软件及其插件基本上都是第二点末尾提到的思路。比如Zotero将标注的数据存在了自己的数据库里，可以在自己软件内进行平台间的同步，但是这时的笔记还只是标注，与pdf密不可分，距离笔记的形态还是有距离，所以一般还是会通过导出笔记到专门的笔记软件如Obsidian中进行管理。Obsidian内也可以通过插件将pdf读书集成到应用中，实现一边读书一边做笔记并生成笔记链接url。</li>
+</ol>
+<h5 id="下面说说我的痛点："><a href="#下面说说我的痛点：" class="headerlink" title="下面说说我的痛点："></a>下面说说我的痛点：</h5><p>总体上我准备采用第三种方案，在单独的文件中做笔记，并通过软件将pdf标注生成url方便索引。</p>
+<ol>
+<li>但是看了下现有的一些方案，基本上这种生成的索引都是单向的，即可以从url跳转到pdf文件处，但是无法在pdf读到那个地方时候跳到笔记文件对应处。</li>
+<li>如果在pdf文件中同步直接标注，则可以直接在阅读pdf文件时候同步看到当前对应的高亮和标注。但是这又引入我上面说到的pdf直接标注的缺点了，你需要同时管理其中的pdf二进制文件，工作量又增加了。</li>
+<li>也有些Obsidian三方可能会采取这样一种策略，将高亮标注信息保存在插件内部数据库：当你在通过这个插件阅读pdf时，标注一条数据会在生成的url索引中，插入‘插件内部数据库关于这条高亮的信息’，这样就既不用维护pdf文件，又能在pdf中显示高亮数据了。（Zotero进行标注时采用的就是这种方法，将数据全部存于Zotero本地的数据库内。）但是要注意，不用维护pdf文件是好处，带来的问题是你相当于需要维护这个插件的数据库，数据库丢失了或者数据出问题了，标注信息也就丢失了。当然维护数据自然是记笔记需要付出的代价，但是相比与一个human-unreadable数据库，我更愿意维护一个human-readable单个笔记文件。可读是很重要的，即使在最恶劣的情况下，系统坏掉，但是由于肉眼可读，只要可以打开这个笔记文本文件本身，那你的数据就可以恢复。当然对于大型系统来说数据库系统无疑是高效于文件系统的，只是在我的笔记系统里，这是是不适合的而已。</li>
+</ol>
+<h3 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a>Solution：</h3><h5 id="那么首先归纳我的需求"><a href="#那么首先归纳我的需求" class="headerlink" title="那么首先归纳我的需求"></a>那么首先归纳我的需求</h5><ol>
+<li>以<code>笔记文件</code>为中心，笔记存于pdf文件之外，<code>一切</code>标注数据存于单个文本<code>笔记文件</code>中；</li>
+<li>在阅读的时候可以自动同步展示<code>笔记文件</code>中对应笔记。当然在<code>笔记文件</code>中也可以同步展示pdf中对应的引用处。</li>
+<li>(附加)从<code>笔记文件</code>中获取<code>数据</code>，并在在pdf中展示高亮。</li>
+</ol>
+<h5 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h5><p>几经查找发现了一个比较合适的方案。<br><code>EMacs</code>下的<code>pdf-tools</code> + <code>org-noter</code>， 满足了需求<code>1</code>和<code>2</code>中annotation剥离和同步阅读的问题。<br>所有我需要的信息保存在一个单独的org文件中，阅读PDF时,<code>笔记文件</code>中的标注会自动同步滚动到对应处。</p>
+<h5 id="缺点-Cons"><a href="#缺点-Cons" class="headerlink" title="缺点 Cons:"></a><code>缺点</code> <code>Cons</code>:</h5><ol>
+<li>是标注不能在pdf文件中高亮显示。</li>
+<li>Emacs是桌面全平台，但是没有iOS端</li>
+</ol>
+<h5 id="缺点改进："><a href="#缺点改进：" class="headerlink" title="缺点改进："></a>缺点改进：</h5><ol>
+<li><code>缺点1</code>的问题是可以解决的，为之增加了根据<code>笔记文件</code>中的高亮信息一键在pdf中嵌入高亮和标注的功能。<br><code>org-noter-embed-all-org-note-to-pdf</code><br>这个方法可以将一个没有任何标注的pdf，嵌入<code>笔记文件</code>中的高亮。当然你无需维护这个pdf，因为所有信息都在<code>笔记文件</code>中，你随时可以生成标注。我一般做法是阅读时生成标注信息，而不把标注真正的保存进pdf中。</li>
+<li><code>缺点2</code>的问题目前只能workaround<br>虽然不能完全解决，但是因为在移动平台上使用得不多，可以在桌面端将标注嵌入pdf文件，因为pdf文件的标注的兼容性，在iOS上自然是可以查看的。不过，想要进行标注的修改更新的话还是要到<code>笔记文件</code>中更新。<br>其实想要实现更新在pdf文件中更新来同步更新标注，可以像<code>缺点1</code>那样，修改org-noter从pdf导出标注的方法，将其导出数据格式适配为包含高亮region数据的格式。这样更新了pdf数据后，将其导出到<code>笔记文件</code>，实现同步。这样就实现双向无缝同步了。<br>但是习惯上因为很少在移动端阅读，所以这个需求不是很迫切，适配工作会延后。</li>
+</ol>
+<h3 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h3><p><img src="/../imgs/org-noter_demo.gif" alt="org-noter_demo"><br>demo content:</p>
+<ol>
+<li>sync pdf display to current heading note</li>
+<li>sync pdf display and notes between heading notes</li>
+<li>sync notes display to current pdf view page automatically</li>
+<li>embed notes from notes file to pdf file (personal impelmentation)</li>
+</ol>
+<pre><code class="highlight mermaid">graph TD;
+A(pdf) --- O
+B(pdf) --- O
+C(pdf) --- O
+subgraph E[org-noter in Emacs]
+O(org-file) 
+end
+O --- |sync| G[(Git repository)]
+Oa --- |sync| G[(Git repository)]
+subgraph Ea[org-noter in Emacs]
+Oa(org-file) 
+end
+Oa --- H(pdf)
+Oa --- I(pdf)
+Oa --- J(pdf)
+</code></pre>
+
+<h5 id="Optional-从pdf导出标注"><a href="#Optional-从pdf导出标注" class="headerlink" title="(Optional) 从pdf导出标注"></a>(Optional) 从pdf导出标注</h5><p>org-noter也支持从pdf中导出其中outline&#x2F;链接&#x2F;标注信息到<code>笔记文件</code>的功能。<br>不过导出的高亮标注的文本格式我还没有与我新添加的<code>org-noter-embed-all-org-note-to-pdf</code>功能做适配器，导出的文本不能使用我添加的<code>embed</code>功能。<br>其实以现在既然以<code>笔记文件</code>为中心，所有信息都应该是在笔记中的，从pdf中导出标注的功能可以说一般是不需要的，只有两种场景会用到：</p>
+<blockquote>
+<ol>
+<li>从旧pdf进行迁移，导入数据</li>
+<li>从pdf中导出outline</li>
+<li>在移动平台上直接对pdf进行了更新，于是从pdf中导出数据到<code>笔记文件</code>，进行数据更新。<br>鉴于目前这方面需求不是很迫切，适配工作会延后。</li>
+</ol>
+</blockquote>
+<h5 id="Optional-org-pdftools"><a href="#Optional-org-pdftools" class="headerlink" title="(Optional) org-pdftools"></a>(Optional) org-pdftools</h5><p>这是另一个用于补充功能的Package，可以生成一个url来进行跳转。可能大家更为熟悉这种方式，不过对我来说比较鸡肋，org-noter本身已具有同步显示功能</p>
+<h5 id="关于pdf-tools-org-noter-的具体使用，可以看另一篇"><a href="#关于pdf-tools-org-noter-的具体使用，可以看另一篇" class="headerlink" title="关于pdf-tools + org-noter 的具体使用，可以看另一篇"></a>关于<code>pdf-tools</code> + <code>org-noter</code> 的具体使用，可以看另一篇</h5><blockquote>
+<a href="/2022/10/12/2022-10-12_Using-pdf-tools-org-noter-in-Emacs/" title="Using-pdf-tools-org-noter-in-Emacs">Using-pdf-tools-org-noter-in-Emacs</a>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/notes/" rel="tag"># notes</a>
+              <a href="/tags/Emacs/" rel="tag"># Emacs</a>
+              <a href="/tags/Book-Reading/" rel="tag"># Book Reading</a>
+              <a href="/tags/org-noter%EF%BC%8CPDFTools/" rel="tag"># org-noter，PDFTools</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/09/23/2022-09-23_Serve-a-local-file-with-download-link/" rel="prev" title="Serve a local file with download link">
+                  <i class="fa fa-chevron-left"></i> Serve a local file with download link
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/10/12/2022-10-12_Using-pdf-tools-org-noter-in-Emacs/" rel="next" title="Using pdf-tools & org-noter in Emacs and add my own features">
+                  Using pdf-tools & org-noter in Emacs and add my own features <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">organicCola</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"neutral","dark":"default"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.3/mermaid.min.js","integrity":"sha256-TIYL00Rhw/8WaoUhYTLX9SKIEFdXxg+yMWSLVUbhiLg="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

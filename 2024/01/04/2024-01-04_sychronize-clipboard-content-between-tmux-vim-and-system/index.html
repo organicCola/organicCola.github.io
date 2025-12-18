@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="PreI usually use tmux and vim in workflow, and they work well most time, especially in a TUI environment. They both have copy&#x2F;paste function, but there’s still some issue bothering me sometime. I">
+<meta property="og:type" content="article">
+<meta property="og:title" content="synchronize clipboard content between tmux vim and system">
+<meta property="og:url" content="http://example.com/2024/01/04/2024-01-04_sychronize-clipboard-content-between-tmux-vim-and-system/index.html">
+<meta property="og:site_name" content="organicCola&#39;s House">
+<meta property="og:description" content="PreI usually use tmux and vim in workflow, and they work well most time, especially in a TUI environment. They both have copy&#x2F;paste function, but there’s still some issue bothering me sometime. I">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-01-04T17:30:00.000Z">
+<meta property="article:modified_time" content="2025-12-18T11:25:00.265Z">
+<meta property="article:author" content="organicCola">
+<meta property="article:tag" content="vim">
+<meta property="article:tag" content="tmux">
+<meta property="article:tag" content="clipboard">
+<meta property="article:tag" content="system">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2024/01/04/2024-01-04_sychronize-clipboard-content-between-tmux-vim-and-system/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2024/01/04/2024-01-04_sychronize-clipboard-content-between-tmux-vim-and-system/","path":"2024/01/04/2024-01-04_sychronize-clipboard-content-between-tmux-vim-and-system/","title":"synchronize clipboard content between tmux vim and system"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>synchronize clipboard content between tmux vim and system | organicCola's House</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">organicCola's House</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Organic cola is good for your happiness</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pre"><span class="nav-number">1.</span> <span class="nav-text">Pre</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Issue"><span class="nav-number">2.</span> <span class="nav-text">Issue</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#GUI"><span class="nav-number">2.0.1.</span> <span class="nav-text">GUI</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#Tmux"><span class="nav-number">2.0.1.1.</span> <span class="nav-text">Tmux</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Vim"><span class="nav-number">2.0.1.2.</span> <span class="nav-text">Vim</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#between-tmux-and-vim"><span class="nav-number">2.0.1.3.</span> <span class="nav-text">between tmux and vim</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TUI"><span class="nav-number">2.0.2.</span> <span class="nav-text">TUI</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">3.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Diagrams"><span class="nav-number">4.</span> <span class="nav-text">Diagrams</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Steps"><span class="nav-number">5.</span> <span class="nav-text">Steps</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#iSH"><span class="nav-number">5.1.</span> <span class="nav-text">iSH</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Archlinux"><span class="nav-number">5.2.</span> <span class="nav-text">Archlinux</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MacOS"><span class="nav-number">5.3.</span> <span class="nav-text">MacOS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#msys2"><span class="nav-number">5.4.</span> <span class="nav-text">msys2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WSL"><span class="nav-number">5.5.</span> <span class="nav-text">WSL</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Using-wclip-tool-a-blazing-fast-one"><span class="nav-number">5.5.1.</span> <span class="nav-text">Using wclip tool: a blazing fast one</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#for-tmux"><span class="nav-number">5.5.2.</span> <span class="nav-text">for tmux</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#for-vim"><span class="nav-number">5.5.3.</span> <span class="nav-text">for vim</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Finally"><span class="nav-number">6.</span> <span class="nav-text">Finally</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">organicCola</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">103</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/01/04/2024-01-04_sychronize-clipboard-content-between-tmux-vim-and-system/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="organicCola">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="organicCola's House">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="synchronize clipboard content between tmux vim and system | organicCola's House">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          synchronize clipboard content between tmux vim and system
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-01-04 17:30:00" itemprop="dateCreated datePublished" datetime="2024-01-04T17:30:00+00:00">2024-01-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="Pre"><a href="#Pre" class="headerlink" title="Pre"></a>Pre</h3><p>I usually use tmux and vim in workflow, and they work well most time, especially in a TUI environment. They both have copy&#x2F;paste function, but there’s still some issue bothering me sometime.</p>
+<h3 id="Issue"><a href="#Issue" class="headerlink" title="Issue"></a>Issue</h3><p>first their clipboard functions are not uniform depending on platforms.</p>
+<h5 id="GUI"><a href="#GUI" class="headerlink" title="GUI"></a>GUI</h5><p>In a GUI environment, they both have the ablility to copy content to the system clipboard.</p>
+<h6 id="Tmux"><a href="#Tmux" class="headerlink" title="Tmux"></a>Tmux</h6><p>In default the content copied in tmux can be paste to the system clipboard, so when you copy in tmux&#x2F;vim, you can paste into other applications.<br>However it’s not a two-way synchronization. when you copy outside the tmux, the content can’t be paste in the tmux with <code>prefix + ]</code></p>
+<h6 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h6><p>for vim, you can configure to synchronize with system clipboard</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> clipboard=unnamed</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>only if the execution binary compiled with “clipboard” function, you can check with <code>:version</code> in vim. a <code>-clipboard</code> means it doesn’t have it.)</p>
+</blockquote>
+<h6 id="between-tmux-and-vim"><a href="#between-tmux-and-vim" class="headerlink" title="between tmux and vim"></a>between tmux and vim</h6><p>They can’t really communicate. Let’s say you have a Vim pane in tmux, content copied with tmux <code>prefix + [</code> can paste into Vim with <code>prefix + ]</code>, that’s sure; but content copied in vim with <code>y</code> can’t be paste by tmux paste action <code>prefix + ]</code>, and you could get very confused and annoying when you carelesslly use a <code>y</code> instead of the <code>proper</code> <code>prefix + [</code></p>
+<h5 id="TUI"><a href="#TUI" class="headerlink" title="TUI"></a>TUI</h5><p>Without GUI, it’s the worst situation, you don’t have a system clipboard. though you could live in tmux at the very begining when you login in the shell, and do all the copy&#x2F;paste using tmux clipboard, it’s not gentle enough, not mention the cluttered keystrokes may drive you crazy.</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>After standing the tingling from time to time, I decide to get rid of it.<br>In iSH, it’s very hard to select&#x2F;copy using iOS gesture, so I use tmux copy&#x2F;paste function to take care of that, keyboard can control it in a more precisely way. And what’s more, vim in alpine apk can’t paste from system clipboard even with <code>set clipboard=unnamed</code> config, because  apparently it doesn’t be compiled with clipboard funcion, I happen to find a alternative way to copy content across sections with <code>/dev/clipboard</code> file when I search a solution for it in iSH repo issue: <a target="_blank" rel="noopener" href="https://github.com/ish-app/ish/issues/2092">ref: Can’t copy text more than 50 lines · Issue #2092 · ish-app&#x2F;ish</a>.<br>In iSH, <code>/dev/clipboard</code> is the clipboard that communicate with iSH and the iOS system, the content is shared across them. Inspired by it, I realized that files could be used for a rough synchronization purpose between tmux&#x2F;vim&#x2F;system. We could take files like <code>/dev/clipboard</code> as a intermedia for text transfer between them.</p>
+<h3 id="Diagrams"><a href="#Diagrams" class="headerlink" title="Diagrams"></a>Diagrams</h3><pre><code class="highlight mermaid">flowchart TD;
+C(/dev/clipboard pbcopy pbpaste wlip);
+T(tmux) &lt;--&gt; C;
+V(vim) &lt;--&gt; C;
+S(system) &lt;--&gt; C;</code></pre>
+
+<h3 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h3><h4 id="iSH"><a href="#iSH" class="headerlink" title="iSH"></a>iSH</h4><ul>
+<li>for tmux, make <code>C-b ]</code> load into <code>paste-buffer</code> and then paste from the <code>/dev/clipboard</code> instead of default <code>paste-buffer -p</code>.<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bind-key ] run-shell &#x27;cat /dev/clipboard | tmux load-buffer - \; paste-buffer -p&#x27;</span><br></pre></td></tr></table></figure></li>
+<li>for vim(which comes with no clipboard function), tweak the yank&#x2F;paste function would be enough.<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function!</span> <span class="title">WriteVariableToFile</span><span class="params">()</span></span><br><span class="line">    <span class="comment">&quot; write content into clipboard from vim register</span></span><br><span class="line">    <span class="keyword">let</span> content = @<span class="comment">&quot;</span></span><br><span class="line">    <span class="keyword">call</span> <span class="built_in">writefile</span>([content], <span class="string">&#x27;/dev/clipboard&#x27;</span>)</span><br><span class="line">    <span class="string">&quot; echo &quot;</span>Variable written <span class="keyword">to</span> clipboard<span class="comment">&quot;</span></span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line">command! WriteVariableToFile <span class="keyword">call</span> WriteVariableToFile()</span><br><span class="line"><span class="comment">&quot; hook the yank event in vim, and make the copied content write into clipboard when yank text.</span></span><br><span class="line"><span class="keyword">autocmd</span> TextYankPost * <span class="keyword">call</span> WriteVariableToFile()</span><br><span class="line"></span><br><span class="line"><span class="keyword">function!</span> <span class="title">ReplaceRegisterContent</span><span class="params">()</span></span><br><span class="line">    <span class="keyword">let</span> lines = <span class="built_in">readfile</span>(<span class="string">&#x27;/dev/clipboard&#x27;</span>)</span><br><span class="line">    <span class="keyword">let</span> content = <span class="keyword">join</span>(lines, <span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    <span class="keyword">call</span> <span class="built_in">setreg</span>(<span class="string">&#x27;&quot;&#x27;</span>, content)</span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line">command! ReplaceRegisterContent <span class="keyword">call</span> ReplaceRegisterContent()</span><br><span class="line"><span class="comment">&quot; remap key `p` to retrieve the content from clipboard before paste.</span></span><br><span class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;silent&gt;</span> <span class="keyword">p</span> :<span class="keyword">call</span> ReplaceRegisterContent()<span class="symbol">&lt;CR&gt;</span><span class="keyword">p</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="Archlinux"><a href="#Archlinux" class="headerlink" title="Archlinux"></a>Archlinux</h4><p>archlinux doesn’t have <code>/dev/clipboard</code>, so I just use a temp file <code>~/clipboard</code> instead.</p>
+<ul>
+<li>tmux<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bind-key ] run-shell <span class="string">&#x27;cat ~/clipboard | tmux load-buffer - \; paste-buffer -p&#x27;</span></span><br></pre></td></tr></table></figure></li>
+<li>vim<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function!</span> <span class="title">WriteVariableToFile</span><span class="params">()</span></span><br><span class="line">    <span class="comment">&quot; write content into clipboard from vim register</span></span><br><span class="line">    <span class="keyword">let</span> content = @<span class="comment">&quot;</span></span><br><span class="line">    <span class="keyword">call</span> <span class="built_in">writefile</span>([content], <span class="built_in">expand</span>(<span class="string">&#x27;~/clipboard&#x27;</span>))</span><br><span class="line">    <span class="string">&quot; echo &quot;</span>Variable written <span class="keyword">to</span> clipboard<span class="comment">&quot;</span></span><br><span class="line">    <span class="keyword">endfunction</span></span><br><span class="line">command! WriteVariableToFile <span class="keyword">call</span> WriteVariableToFile()</span><br><span class="line"><span class="comment">&quot; hook the yank event in vim, and make the copied content write into clipboard when yank text.</span></span><br><span class="line"><span class="keyword">autocmd</span> TextYankPost * <span class="keyword">call</span> WriteVariableToFile()</span><br><span class="line"></span><br><span class="line"><span class="keyword">function!</span> <span class="title">ReplaceRegisterContent</span><span class="params">()</span></span><br><span class="line">    <span class="keyword">let</span> lines = <span class="built_in">readfile</span>(<span class="built_in">expand</span>(<span class="string">&#x27;~/clipboard&#x27;</span>))</span><br><span class="line">    <span class="keyword">let</span> content = <span class="keyword">join</span>(lines, <span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    <span class="keyword">call</span> <span class="built_in">setreg</span>(<span class="string">&#x27;&quot;&#x27;</span>, content)</span><br><span class="line">    <span class="keyword">endfunction</span></span><br><span class="line">command! ReplaceRegisterContent <span class="keyword">call</span> ReplaceRegisterContent()</span><br><span class="line"><span class="comment">&quot; remap key `p` to retrieve the content from clipboard before paste.</span></span><br><span class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;silent&gt;</span> <span class="keyword">p</span> :<span class="keyword">call</span> ReplaceRegisterContent()<span class="symbol">&lt;CR&gt;</span><span class="keyword">p</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="MacOS"><a href="#MacOS" class="headerlink" title="MacOS"></a>MacOS</h4><ul>
+<li>for tmux<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bind-key ] run-shell &#x27;pbpaste | tmux load-buffer - \; paste-buffer -p&#x27;</span><br></pre></td></tr></table></figure></li>
+<li>vim in MacOS is usually compiled with clipboard function, so we don’t have to tweak vim config.</li>
+</ul>
+<h4 id="msys2"><a href="#msys2" class="headerlink" title="msys2"></a>msys2</h4><p>msys2 has <code>/dev/clipboard</code>.</p>
+<ul>
+<li>tmux installed with pacman got isssue at communication with system clipboard, plugin <code>tmux-yank</code> will do that for you.<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set -g @plugin &#x27;tmux-plugins/tmux-yank&#x27;</span><br></pre></td></tr></table></figure>
+and the same, tmux under <code>msys2</code> now can copy into system clipboard though, won’t paste from system clipboard, so tweak <code>C-b ]</code> to load text into <code>paste-buffer</code> from system clipboard and then paste.<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bind-key ] run-shell &#x27;cat /dev/clipboard | tmux load-buffer - \; paste-buffer -p&#x27;</span><br></pre></td></tr></table></figure></li>
+<li>vim in <code>msys2</code> compiled with clipboard function, so we don’t have to tweak vim config.</li>
+</ul>
+<h4 id="WSL"><a href="#WSL" class="headerlink" title="WSL"></a>WSL</h4><p>Defaultly you can use <code>Shift+Insert</code> to copy contents from system to wsl, and copy text selected by mouse with a <code>Enter</code> keystroke.<br>Though, that’s not elegant enough.<br>Luckily, at least we can communicate with system clipboard using clip.exe. But it seems to have some performance issue. Besides you have to call <code>powershell.exe</code> to execute the <code>clip.exe</code> to handle UTF-8 issue, and you have to config <code>&quot;$HOME\Documents\WindowsPowerShell\&quot;</code> to achieve it.</p>
+<p>However luckily again, I found a tool <code>wclip</code> which handle the all the things for you, and it’s fast won’t lag you down.</p>
+<h5 id="Using-wclip-tool-a-blazing-fast-one"><a href="#Using-wclip-tool-a-blazing-fast-one" class="headerlink" title="Using wclip tool: a blazing fast one"></a>Using <code>wclip</code> tool: a blazing fast one</h5><blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/memoryInject/wsl-clipboard">ref: wsl-clipboard</a></p>
+</blockquote>
+<p>donwload resource with <code>wget</code></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/memoryInject/wsl-clipboard/releases/download/v0.1.0/wclip.exe</span><br><span class="line">wget https://github.com/memoryInject/wsl-clipboard/releases/download/v0.1.0/wcopy</span><br><span class="line">wget https://github.com/memoryInject/wsl-clipboard/releases/download/v0.1.0/wpaste</span><br></pre></td></tr></table></figure>
+<p>mv to path</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> wcopy /usr/bin &amp;&amp; <span class="built_in">cp</span> wpaste /usr/bin</span><br></pre></td></tr></table></figure>
+<p>run below in <code>powershell</code> (warning: as <code>administrator</code>)</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> \\wsl.localhost\Ubuntu\home\Anonymous\wclip.exe C:\Windows\System32\</span><br></pre></td></tr></table></figure>
+<p>That’s the <code>wclip</code> part.</p>
+<p>Next we need to config <code>wcopy/wpaste</code> in <code>wsl.vimrc</code> and <code>tmuxFile/wsl.tmux.conf&quot;</code></p>
+<h5 id="for-tmux"><a href="#for-tmux" class="headerlink" title="for tmux"></a>for tmux</h5><p>Defaultly tmux can copy content to system clipboard with its <code>copy mode</code>, while it can’t copy from the system clipboard.<br>So, override the paste function in <code>wsl.tmux.conf</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bind-key ] run-shell &#x27;wpaste | tmux load-buffer -\; paste-buffer -p&#x27;</span><br></pre></td></tr></table></figure>
+
+<h5 id="for-vim"><a href="#for-vim" class="headerlink" title="for vim"></a>for vim</h5><p>Default Vim installed comes with no clipboard function. Though it’s heard that <code>vim-gtk</code> got clipboard funtion, didn’t try it.<br>Vimscript provide a <code>TextYankPost</code>, which is a kill for hooking copying aciotn.<br>in <code>wsl.vimrc</code>:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&quot; 1. copy to system</span></span><br><span class="line"><span class="keyword">autocmd</span> TextYankPost * :<span class="keyword">call</span> <span class="built_in">system</span>(<span class="string">&#x27;wcopy -i&#x27;</span>,@<span class="string">&quot;) &quot;</span>wcopy <span class="keyword">is</span> indeed super blazing fast</span><br></pre></td></tr></table></figure>
+<p>For pasting, if implementation of the basic pasting function from system will satisfy you then it’s an easy job.<br>But if you want a behaviour highly obey the native one, that’s annoying. Vimscript does’t provide paste hook like a <code>TextPasteHook</code>, NO, there is no such thing.<br>But anyway, it’s done. More than basic, the following almost make it behave like a native paste performance, including:</p>
+<ul>
+<li>override selected text in visual mode</li>
+<li>receive <code>multiply count repeat</code> argument <code>[count]</code></li>
+<li>receive <code>register designation</code> argument <code>&quot;[x]</code><br>in <code>wsl.vimrc</code>:<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function!</span> <span class="title">CheckAndUpdateClipboardWithSystem</span><span class="params">()</span></span><br><span class="line">  <span class="keyword">let</span> clipboard_content = <span class="built_in">system</span>(<span class="string">&#x27;wpaste&#x27;</span>)</span><br><span class="line">  <span class="keyword">let</span> register_content = <span class="built_in">getreg</span>(<span class="string">&#x27;&quot;&#x27;</span>)</span><br><span class="line">  <span class="comment">&quot; update unless neccessary(because if there is a preserved content in register_0 after delete action, set value to unnamed register will also replace content of the register_0)</span></span><br><span class="line">  <span class="keyword">if</span> clipboard_content != register_content</span><br><span class="line">    <span class="keyword">call</span> <span class="built_in">setreg</span>(<span class="string">&#x27;&quot;&#x27;</span>, clipboard_content)</span><br><span class="line">  <span class="keyword">endif</span></span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function!</span> <span class="title">Hook_key_p</span><span class="params">()</span></span><br><span class="line">  <span class="keyword">call</span> CheckAndUpdateClipboardWithSystem()</span><br><span class="line">  <span class="comment">&quot; simulate the origin p behaviour</span></span><br><span class="line">  <span class="comment">&quot; echo v:register</span></span><br><span class="line">  <span class="comment">&quot; v:register usage is inspired by: [ref: How can I define an operator that takes a register as an argument?](https://vi.stackexchange.com/questions/8934/how-can-i-define-an-operator-that-takes-a-register-as-an-argument)</span></span><br><span class="line">  <span class="keyword">let</span> count_arg = <span class="variable">v:count</span> ? <span class="variable">v:count</span> : <span class="number">1</span></span><br><span class="line">  <span class="keyword">let</span> cmd = <span class="string">&quot;normal! &quot;</span> .count_arg.<span class="string">&#x27;&quot;&#x27;</span>.<span class="variable">v:register</span> . <span class="string">&quot;p&quot;</span></span><br><span class="line">  <span class="keyword">execute</span> cmd</span><br><span class="line">  <span class="comment">&quot; [pending: personally didn&#x27;t use repeat for now] Relies on vim-repeat for repeatability by the . command.</span></span><br><span class="line">  <span class="comment">&quot; [ref: vim-wsl-copy-paste](https://github.com/Konfekt/vim-wsl-copy-paste/blob/main/plugin/wsl-copy-paste.vim)</span></span><br><span class="line">  <span class="string">&quot; let repeat_cmd = &#x27;call repeat#set(&quot;</span><span class="keyword">cp</span><span class="comment">&quot;,&#x27; . v:count . &#x27;)&#x27;</span></span><br><span class="line">  <span class="comment">&quot; execute repeat_cmd</span></span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"><span class="comment">&quot; [deprecated 1] input `10p` on this keymap will: execute [paste content in Hook_key_p function] and &lt;CR&gt; for 10 times, besides symbol `:` will interrupt visual mode</span></span><br><span class="line"><span class="comment">&quot; nnoremap p :call Hook_key_p()&lt;CR&gt;</span></span><br><span class="line"><span class="comment">&quot; [deprecated 2] if only use p like below(don&#x27;t execute p in the Hook_key_p function), will</span></span><br><span class="line"><span class="comment">&quot; execute &lt;CR&gt; for 10 times, but only paste content for 1 time.</span></span><br><span class="line"><span class="comment">&quot; execute &lt;CR&gt; for 10 times, but only paste content for 1 time.</span></span><br><span class="line"><span class="comment">&quot; nnoremap p :call Hook_key_p()&lt;CR&gt;p</span></span><br><span class="line"><span class="string">&quot; The special text &lt;Cmd&gt; begins a &quot;</span><span class="keyword">command</span> mapping<span class="comment">&quot;, it executes the command directly without changing modes.</span></span><br><span class="line"><span class="keyword">nnoremap</span> <span class="keyword">p</span> <span class="symbol">&lt;Cmd&gt;</span><span class="keyword">call</span> Hook_key_p()<span class="symbol">&lt;CR&gt;</span></span><br><span class="line"><span class="comment">&quot; [deprecated 3]</span></span><br><span class="line"><span class="comment">&quot; function! Hook_key_visual_p()</span></span><br><span class="line">  <span class="comment">&quot; visual mode is highly possible to be interrputed by other operatons like input `:`, to ensure replacement of the selected text, better use `gv` to restore the visual mode.</span></span><br><span class="line">  <span class="comment">&quot; execute &#x27;normal gv&#x27;</span></span><br><span class="line">  <span class="string">&quot;&quot;</span> <span class="keyword">let</span> cmd = <span class="string">&quot;normal! &quot;</span> .<span class="string">&#x27;&quot;&#x27;</span>.<span class="variable">v:register</span> . <span class="string">&quot;p&quot;</span></span><br><span class="line">  <span class="comment">&quot; execute cmd</span></span><br><span class="line"><span class="comment">&quot; endfunction</span></span><br><span class="line"><span class="keyword">vnoremap</span> <span class="keyword">p</span> <span class="symbol">&lt;Cmd&gt;</span><span class="keyword">call</span> Hook_key_p()<span class="symbol">&lt;CR&gt;</span></span><br><span class="line"><span class="keyword">function!</span> <span class="title">Hook_key_P</span><span class="params">()</span></span><br><span class="line"> <span class="keyword">call</span> CheckAndUpdateClipboardWithSystem()</span><br><span class="line"> <span class="keyword">let</span> count_arg = <span class="variable">v:count</span> ? <span class="variable">v:count</span> : <span class="number">1</span></span><br><span class="line"> <span class="keyword">let</span> cmd = <span class="string">&quot;normal! &quot;</span> .count_arg.<span class="string">&#x27;&quot;&#x27;</span>.<span class="variable">v:register</span> . <span class="string">&quot;P&quot;</span></span><br><span class="line">  <span class="keyword">execute</span> cmd</span><br><span class="line"><span class="keyword">endfunction</span></span><br><span class="line"><span class="keyword">nnoremap</span> <span class="keyword">P</span> <span class="symbol">&lt;Cmd&gt;</span><span class="keyword">call</span> Hook_key_P()<span class="symbol">&lt;CR&gt;</span></span><br><span class="line"><span class="keyword">vnoremap</span> <span class="keyword">P</span> <span class="symbol">&lt;Cmd&gt;</span><span class="keyword">call</span> Hook_key_P()<span class="symbol">&lt;CR&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Finally"><a href="#Finally" class="headerlink" title="Finally"></a>Finally</h3><p>Finally, you could just copy&#x2F;paste more carelesslly, Without considering which way to be used for copy&#x2F;paste operation.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/vim/" rel="tag"># vim</a>
+              <a href="/tags/tmux/" rel="tag"># tmux</a>
+              <a href="/tags/clipboard/" rel="tag"># clipboard</a>
+              <a href="/tags/system/" rel="tag"># system</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/10/30/2023-10-30_a-very-junior-advanced-mathematics-notes/" rel="prev" title="a very junior advanced mathematics notes">
+                  <i class="fa fa-chevron-left"></i> a very junior advanced mathematics notes
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/01/30/2024-01-30_a-simple-iOS-shortcut-for-appending-new-word-to-vocabulary-notebook/" rel="next" title="a simple iOS shortcut for appending new word to vocabulary notebook">
+                  a simple iOS shortcut for appending new word to vocabulary notebook <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">organicCola</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"neutral","dark":"default"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.3/mermaid.min.js","integrity":"sha256-TIYL00Rhw/8WaoUhYTLX9SKIEFdXxg+yMWSLVUbhiLg="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

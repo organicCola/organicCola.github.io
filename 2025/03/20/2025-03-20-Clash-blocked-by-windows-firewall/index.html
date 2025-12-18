@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="preToday when I tried git pull command, encountered an Error 1234567nc: connect to 192.168.100.112 port 7890 (tcp) failed: Connection timed outkex_exchange_identification: Connection closed by remote">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Clash blocked by Windows firewall">
+<meta property="og:url" content="http://example.com/2025/03/20/2025-03-20-Clash-blocked-by-windows-firewall/index.html">
+<meta property="og:site_name" content="organicCola&#39;s House">
+<meta property="og:description" content="preToday when I tried git pull command, encountered an Error 1234567nc: connect to 192.168.100.112 port 7890 (tcp) failed: Connection timed outkex_exchange_identification: Connection closed by remote">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-03-20T20:50:32.000Z">
+<meta property="article:modified_time" content="2025-12-18T11:25:00.265Z">
+<meta property="article:author" content="organicCola">
+<meta property="article:tag" content="ssh">
+<meta property="article:tag" content="Proxy">
+<meta property="article:tag" content="Windows">
+<meta property="article:tag" content="Clash">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2025/03/20/2025-03-20-Clash-blocked-by-windows-firewall/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2025/03/20/2025-03-20-Clash-blocked-by-windows-firewall/","path":"2025/03/20/2025-03-20-Clash-blocked-by-windows-firewall/","title":"Clash blocked by Windows firewall"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Clash blocked by Windows firewall | organicCola's House</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">organicCola's House</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Organic cola is good for your happiness</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#pre"><span class="nav-number">1.</span> <span class="nav-text">pre</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TroubleShooting"><span class="nav-number">2.</span> <span class="nav-text">TroubleShooting</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Time-Sychronization-Error"><span class="nav-number">2.1.</span> <span class="nav-text">Time Sychronization Error</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Ssh-port-error"><span class="nav-number">2.2.</span> <span class="nav-text">Ssh port error</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#It-didn%E2%80%99t-go-through-the-Clash"><span class="nav-number">2.3.</span> <span class="nav-text">It didn’t go through the Clash</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#try-Curl"><span class="nav-number">2.4.</span> <span class="nav-text">try Curl</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WSL-networking"><span class="nav-number">2.5.</span> <span class="nav-text">WSL networking</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Windows-Firewall"><span class="nav-number">2.6.</span> <span class="nav-text">Windows Firewall</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Appendix-Config-File"><span class="nav-number">3.</span> <span class="nav-text">Appendix: Config File</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">organicCola</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">103</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/20/2025-03-20-Clash-blocked-by-windows-firewall/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="organicCola">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="organicCola's House">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Clash blocked by Windows firewall | organicCola's House">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Clash blocked by Windows firewall
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-03-20 20:50:32" itemprop="dateCreated datePublished" datetime="2025-03-20T20:50:32+00:00">2025-03-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="pre"><a href="#pre" class="headerlink" title="pre"></a>pre</h3><p>Today when I tried <code>git pull</code> command, encountered an Error</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">nc: connect to 192.168.100.112 port 7890 (tcp) failed: Connection timed out</span><br><span class="line">kex_exchange_identification: Connection closed by remote host</span><br><span class="line">Connection closed by UNKNOWN port 65535</span><br><span class="line">fatal: Could not <span class="built_in">read</span> from remote repository.</span><br><span class="line"></span><br><span class="line">Please make sure you have the correct access rights</span><br><span class="line">and the repository exists.</span><br></pre></td></tr></table></figure>
+<p>First, I should state my config, I config git with <code>ssh Connection</code> after all github has forbidden users connecting with Http.<br>Due to network situation, I have to use a proxy to reach github.com, so I config it through Clash for Windows.<br><code>192.168.100.112</code> is the Windows host ip.<code>7890</code> is the proxy port used by Clash.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line"> Hostname ssh.github.com</span><br><span class="line"> Port 443</span><br><span class="line"> ProxyCommand nc -v -x 192.168.100.112:7890 %h %p</span><br></pre></td></tr></table></figure>
+<p>It works well before today.<br>Actually, I get some errors like this occasionally, so I didn’t take it as a big deal. I am sure it would be solved after some casual tries.</p>
+<h3 id="TroubleShooting"><a href="#TroubleShooting" class="headerlink" title="TroubleShooting"></a>TroubleShooting</h3><h4 id="Time-Sychronization-Error"><a href="#Time-Sychronization-Error" class="headerlink" title="Time Sychronization Error"></a>Time Sychronization Error</h4><p>Recently the error I found most is the Clash proxy Error due to the Windows system clock sychronization Error, I have always deal with it by manually synchronizing it.<br>but it didn’t work this time.</p>
+<h4 id="Ssh-port-error"><a href="#Ssh-port-error" class="headerlink" title="Ssh port error"></a>Ssh port error</h4><p>Ssh use port 22 by default, I found this could not work with some proxy server, and the one I used is just the case. So you can see I set the <code>Port 443</code> to avoid it. So I double check the Port Setting, nothing wrong.</p>
+<h4 id="It-didn’t-go-through-the-Clash"><a href="#It-didn’t-go-through-the-Clash" class="headerlink" title="It didn’t go through the Clash"></a>It didn’t go through the Clash</h4><p>So what’s happening here? After those tries I realize I can’t just make some casual try, but I have to analyze the situation.<br>Then I found the traffic didn’t got through the Clash at the first place, because the log was empty.</p>
+<h4 id="try-Curl"><a href="#try-Curl" class="headerlink" title="try Curl"></a>try Curl</h4><p>for eliminate misleading errors stemming from SSH itself, I also tried curl with setting proxy by the environment vriable, proxy also can’t reach the Clash either.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> proxyGo=<span class="string">&#x27;export https_proxy=$host_ip:7890 http_proxy=http://$host_ip:7890 all_proxy=socks5://$host_ip:7890&#x27;</span></span><br></pre></td></tr></table></figure>
+<h4 id="WSL-networking"><a href="#WSL-networking" class="headerlink" title="WSL networking"></a>WSL networking</h4><p>At this time I have to consider if it’s the the WSL problem. WSL use the NAT mode by default, and mirrored mode need a Win11 system support. Is there a chance a recent System Update change it to the mirror mode?<br>Again I read the Official guides:</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/wsl/networking">Accessing network applications with WSL</a>.</p>
+</blockquote>
+<p>And found it didn’t change at all, but maybe the guide just didn’t keep up with Update in time? So I try the mirrored mode, and found no luck on the localhost ip. Set it to the mirrored mode manually also get An Error shows this version doesn’t supoort a mirrored mode.</p>
+<h4 id="Windows-Firewall"><a href="#Windows-Firewall" class="headerlink" title="Windows Firewall"></a>Windows Firewall</h4><p>I am not involved with any firewall setting changes from the very begining I use a Clahs for Windows, and since it works well before, this is the last thing I would like to look into.<br>But guess what, finally I hit the jackpot.<br>In the <code>rules</code> I found Clash has some <code>Disallow</code> state, and turn all on, proxy now works like a charm.<br>Considering that, it’s easy to understand why visiting websites using Clash proxy work well, as browser and Clash are in the same <code>localhost</code> network, and are not affected by firewall rules.<br>While proxy request from WSL was was treated by Windows as an incoming traffic rather than a  local one.</p>
+<h3 id="Appendix-Config-File"><a href="#Appendix-Config-File" class="headerlink" title="Appendix: Config File"></a>Appendix: Config File</h3><p>I still don’t know why the firewall setting changes, maybe the system or anti-virus software popped a prompt, and I click the “disallow” button accidently.<br>But I do know, all the system or software setting should be the form of config files or provide a way to produce a similar file so that people can easily check if it’s changed since last time, and I think it would help a lot when we want to know why things behave or work differently.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ssh/" rel="tag"># ssh</a>
+              <a href="/tags/Proxy/" rel="tag"># Proxy</a>
+              <a href="/tags/Windows/" rel="tag"># Windows</a>
+              <a href="/tags/Clash/" rel="tag"># Clash</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/01/30/2024-01-30_a-simple-iOS-shortcut-for-appending-new-word-to-vocabulary-notebook/" rel="prev" title="a simple iOS shortcut for appending new word to vocabulary notebook">
+                  <i class="fa fa-chevron-left"></i> a simple iOS shortcut for appending new word to vocabulary notebook
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/03/27/2025-03-27-Using-FFmpeg-on-Windows/" rel="next" title="Using FFmpeg on Windows">
+                  Using FFmpeg on Windows <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">organicCola</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"neutral","dark":"default"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.3/mermaid.min.js","integrity":"sha256-TIYL00Rhw/8WaoUhYTLX9SKIEFdXxg+yMWSLVUbhiLg="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

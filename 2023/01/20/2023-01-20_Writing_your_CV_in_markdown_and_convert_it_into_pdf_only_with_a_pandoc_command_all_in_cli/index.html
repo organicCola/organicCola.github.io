@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Writing your CV in markdown with your favourite text editor and convert it into PDF with a single pandoc command. All these could be done in a TUI environment, you could even finish it in a tty. PreWr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Writing your CV in markdown and convert it into PDF with pandoc">
+<meta property="og:url" content="http://example.com/2023/01/20/2023-01-20_Writing_your_CV_in_markdown_and_convert_it_into_pdf_only_with_a_pandoc_command_all_in_cli/index.html">
+<meta property="og:site_name" content="organicCola&#39;s House">
+<meta property="og:description" content="Writing your CV in markdown with your favourite text editor and convert it into PDF with a single pandoc command. All these could be done in a TUI environment, you could even finish it in a tty. PreWr">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-01-20T14:40:29.000Z">
+<meta property="article:modified_time" content="2025-12-18T11:25:00.264Z">
+<meta property="article:author" content="organicCola">
+<meta property="article:tag" content="pandoc">
+<meta property="article:tag" content="pdf">
+<meta property="article:tag" content="markdown">
+<meta property="article:tag" content="html">
+<meta property="article:tag" content="wkhtmltopdf">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/01/20/2023-01-20_Writing_your_CV_in_markdown_and_convert_it_into_pdf_only_with_a_pandoc_command_all_in_cli/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/01/20/2023-01-20_Writing_your_CV_in_markdown_and_convert_it_into_pdf_only_with_a_pandoc_command_all_in_cli/","path":"2023/01/20/2023-01-20_Writing_your_CV_in_markdown_and_convert_it_into_pdf_only_with_a_pandoc_command_all_in_cli/","title":"Writing your CV in markdown and convert it into PDF with pandoc"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Writing your CV in markdown and convert it into PDF with pandoc | organicCola's House</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">organicCola's House</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Organic cola is good for your happiness</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Pre"><span class="nav-number">1.</span> <span class="nav-text">Pre</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TL-DR"><span class="nav-number"></span> <span class="nav-text">TL;DR</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#pandoc-Swiss-army-knife-of-markup-format-conversion"><span class="nav-number">1.</span> <span class="nav-text">pandoc - Swiss-army knife of markup format conversion</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Environment"><span class="nav-number">2.</span> <span class="nav-text">Environment</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Solution"><span class="nav-number">3.</span> <span class="nav-text">Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#here-is-the-workflow"><span class="nav-number">3.1.</span> <span class="nav-text">here is the workflow</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Steps"><span class="nav-number">4.</span> <span class="nav-text">Steps</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-on-windows-you-have-to-config-a-linux-like-environment-you-could-do-it-by-installing-Msys2"><span class="nav-number">4.1.</span> <span class="nav-text">1. on windows you have to config a linux-like environment, you could do it by installing Msys2.</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-install-pandoc"><span class="nav-number">4.2.</span> <span class="nav-text">2. install pandoc</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-NOT-my-choice-Using-pdflatex-x2F-xelatex-from-texlive-package-to-convert"><span class="nav-number">4.3.</span> <span class="nav-text">3. [NOT my choice] Using pdflatex&#x2F;xelatex(from texlive package) to convert</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-Work-Using-markdown-amp-css-to-convert"><span class="nav-number">4.4.</span> <span class="nav-text">4. [Work] Using markdown &amp; css to convert</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Appendix-use-mkhtmltopdf-alone-html-%E2%86%92-pdf"><span class="nav-number">5.</span> <span class="nav-text">Appendix: use mkhtmltopdf alone [html → pdf]</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">organicCola</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">103</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/20/2023-01-20_Writing_your_CV_in_markdown_and_convert_it_into_pdf_only_with_a_pandoc_command_all_in_cli/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="organicCola">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="organicCola's House">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Writing your CV in markdown and convert it into PDF with pandoc | organicCola's House">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Writing your CV in markdown and convert it into PDF with pandoc
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-01-20 14:40:29" itemprop="dateCreated datePublished" datetime="2023-01-20T14:40:29+00:00">2023-01-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Writing your CV in markdown with your favourite text editor and convert it into PDF with a single pandoc command. All these could be done in a TUI environment, you could even finish it in a tty.</p>
+<h4 id="Pre"><a href="#Pre" class="headerlink" title="Pre"></a>Pre</h4><p>Writing CV may be annoying.<br>Pdf format is usually prefered, but many one prefer writing in markdown format, you have to convert format after writing.<br>If you use some online website tool then every time you have to open it, it hard to writing something on a web you have to switch between mouse and keyboard which is a disaster, and what’s worse it usually charges, or need VIP for some feature. If you use some software, you have to depend on its export ability to convert your file into specific format, and usually its export has limitation, hard to extend and not flexible enough.<br>Of course, <code>writing in markdown and convert it into pdf</code> can be achieved by many ways.<br>the most simple way is to write in some sofeware and use its feature to display browser, and the save it as a pdf using browser. or using some editor to export to pdf after writing.<br>What if you want it in some way that you can do all the thing in a tty, without opening any browser or open some desktop sofeware?<br>Well, you can use <code>pandoc</code>.</p>
+<h3 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR"></a>TL;DR</h3><p>just use this<br><a href="#4_Work_Using_markdown_css_to_convert"><code>[Work] Using markdown &amp; css to convert</code></a></p>
+<h4 id="pandoc-Swiss-army-knife-of-markup-format-conversion"><a href="#pandoc-Swiss-army-knife-of-markup-format-conversion" class="headerlink" title="pandoc - Swiss-army knife of markup format conversion"></a><code>pandoc - Swiss-army knife of markup format conversion</code></h4><p>it’s a free and open-sourced cli tool.<br>it can convert files between many formats: markdown, html, latex, docx.<br>besides convertion you can custom the output format.<br>cli tool can be use with many other tool-chain which makes it could work very flexibly.</p>
+<h4 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h4><p>The following work is on a win7 pc, so I guess it will work on higher version windows as well. For mac and linux environment, you could even achive better results, because though this is done on win7, but the tool chain is from linux(throuh msys2).</p>
+<h4 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h4><ol>
+<li>Writing your CV in markdown with your favourite editor<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim CV.md</span><br></pre></td></tr></table></figure></li>
+<li>Just Use <code>pandoc</code> &amp; <code>wkhtmltopdf</code> to do the convert.<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandoc --pdf-engine=wkhtmltopdf -c media/davewhipp-print.css -o result.pdf index.md</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h5 id="here-is-the-workflow"><a href="#here-is-the-workflow" class="headerlink" title="here is the workflow"></a>here is the workflow</h5><pre><code class="highlight mermaid">flowchart TB;
+subgraph c[combination]
+  direction TB;
+  md(markdown)
+  css
+end
+c -.-&gt; |pandoc| html
+html -.-&gt; |wkhtmltopdf| pdf
+c --&gt; |using pandoc directly convert| pdf</code></pre>
+
+<h4 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h4><h5 id="1-on-windows-you-have-to-config-a-linux-like-environment-you-could-do-it-by-installing-Msys2"><a href="#1-on-windows-you-have-to-config-a-linux-like-environment-you-could-do-it-by-installing-Msys2" class="headerlink" title="1. on windows you have to config a linux-like environment, you could do it by installing Msys2."></a>1. on windows you have to config a linux-like environment, you could do it by installing <code>Msys2</code>.</h5><ul>
+<li>1.1 download &amp; install msys2<br>(the last version can run on win7)<br><a target="_blank" rel="noopener" href="https://repo.msys2.org/distrib/x86_64/"><code>https://repo.msys2.org/distrib/x86_64/</code></a><br>msys2-x86_64-20221028.exe</li>
+<li>1.2 update msys2<br>enter msys2<br>execute multiple times until the last status<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Syu</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h5 id="2-install-pandoc"><a href="#2-install-pandoc" class="headerlink" title="2. install pandoc"></a>2. install pandoc</h5><blockquote>
+<p>msys2 don’t have this package, so just download the executeable release package from <a target="_blank" rel="noopener" href="https://github.com/jgm/pandoc/releases"><code>github repository</code></a>. then upzip it, put <code>pandoc.exe</code> into msys2 bin folder <code>mingw64/usr/bin</code>.</p>
+</blockquote>
+<h5 id="3-NOT-my-choice-Using-pdflatex-x2F-xelatex-from-texlive-package-to-convert"><a href="#3-NOT-my-choice-Using-pdflatex-x2F-xelatex-from-texlive-package-to-convert" class="headerlink" title="3. [NOT my choice] Using pdflatex&#x2F;xelatex(from texlive package) to convert"></a>3. [NOT my choice] Using pdflatex&#x2F;xelatex(from texlive package) to convert</h5><blockquote>
+<p>at first I saw this <a target="_blank" rel="noopener" href="https://kieranhealy.org/vita.pdf"><code>https://kieranhealy.org/vita.pdf</code></a>, and like its simpel academic curriculum vitae style and color scheme.<br>its source code counld be download here <a target="_blank" rel="noopener" href="https://github.com/kjhealy/kjh-vita"><code>https://github.com/kjhealy/kjh-vita</code></a><br>but be careful since it’s based on a latex solution, it’s more complicated than the following markdown way.<br>according to its memo in kjh-vita.tex, it got some Requirments from his other repository, where is <a target="_blank" rel="noopener" href="https://github.com/kjhealy/latex-custom-kjh"><code>https://github.com/kjhealy/latex-custom-kjh</code></a>. and I found it need some font when compiling it, which counld be solved by download or just use other font instead.</p>
+</blockquote>
+<blockquote>
+<p>latex syntax is much more complex than markdown, though it has an elegant syntax and render it in a precise way, it’s also true to be less readable than markdown.<br>note that if you are not familiar with <code>latex</code>, then this is not a good way to do.<br>if the markdown file contains CJK character(like <code>Chinese</code>), the default <code>pdflatex</code> won’t satisfy you, you could use<code>xelatex</code> instead.<br>this way you may entercount lots of <code>file missing</code> ERROR, you could solve it by download the corresponding file.<br>but if you konw what your are doing it’s totally ok.</p>
+</blockquote>
+<p>at first I tried use pandoc convert markdown to pdf directly through xelatex, and the Chinese character issue and highlight style issue should be taken care of, which is basically like the following:</p>
+ <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pandoc -f markdown -o result.pdf --pdf-engine=xelatex -s -VCJKoptions=BoldFont=<span class="string">&quot;SimHei&quot;</span> -VCJKmainfont=<span class="string">&quot;SimSun&quot;</span> --highlight-style=zenburn -V colorlinks -H head.tex -t pdf resume.md</span><br><span class="line">(head.tex is an <span class="built_in">head</span> file to add <span class="built_in">head</span> to the pdf file)</span><br></pre></td></tr></table></figure>
+
+<p>but then I found I can’t typeset the content precisely, since latex compelte its typesetting in a single latex file. so if you want using a latex way, you have to writing it in latex at the very beginnig.</p>
+<p>the following is the steps to convert <code>.tex</code> file into a <code>.pdf</code> file.</p>
+<ul>
+<li>3.1 texlive installation and install its depenency</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pacman -S mingw-w64-x86_64-texlive-lang-chinese</span><br><span class="line">pacman -S mingw-w64-x86_64-texlive-font-extra</span><br></pre></td></tr></table></figure>
+<p>  …and other packages you may need.</p>
+<ul>
+<li>3.2 downlaod tex template</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/Desktop</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/kjhealy/kjh-vita</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>3.3 patch kjh-vita template: copy the required file into kjh-vita folder</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/Desktop</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/kjhealy/latex-custom-kjh</span><br><span class="line"><span class="built_in">cd</span> latex-custom-kjh</span><br><span class="line"><span class="built_in">cp</span> needs-memoir/* ~/Desktop/kjh-vita/</span><br><span class="line"><span class="built_in">cp</span> needs-org-mode/* ~/Desktop/kjh-vita/</span><br></pre></td></tr></table></figure>
+<ul>
+<li>3.4 patch kjh-vita template: download vc bundle<br>download vc bundle from <a target="_blank" rel="noopener" href="https://ctan.org/pkg/vc"><code>https://ctan.org/pkg/vc</code></a><br>unzip it, and read the vc-manual, copy the vc binary into kjh-vita folder.</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> vc/git-windows</span><br><span class="line">run the `vc.bat` file and generate the `vc`</span><br><span class="line"><span class="built_in">cp</span> vc ~/Desktop/kjh-vita/</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>3.5 patch kjh-vita template: download the missing font<br>here are some fonts I found need to be download:</p>
+<blockquote>
+<p>FontAwesome&#x2F;Unit-Medium&#x2F;Minion Pro&#x2F;</p>
+</blockquote>
+</li>
+<li><p>3.6 tweak the source code<br>after tried my best I installed some fonts, but still missing some, so I tewaked the source code, so the compilation could be done. actually after the modification the output pdf looks almost the same as original one.</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">diff --git a/kjh-vita.tex b/kjh-vita.tex</span><br><span class="line">index 91ca293..28f1c1a 100644</span><br><span class="line">--- a/kjh-vita.tex</span><br><span class="line">+++ b/kjh-vita.tex</span><br><span class="line">@@ -42,7 +42,7 @@</span><br><span class="line"></span><br><span class="line"> \documentclass[11pt,article,oneside]&#123;memoir&#125;</span><br><span class="line"> \usepackage&#123;org-preamble-xelatex&#125;</span><br><span class="line">-\usepackage&#123;fontawesome,url&#125;</span><br><span class="line">+\usepackage&#123;fontawesome5,url&#125;</span><br><span class="line"></span><br><span class="line"> %%%------------------------------------------------------------------------</span><br><span class="line">@@ -98,13 +98,13 @@</span><br><span class="line"> \setsansfont[Mapping=tex-text,</span><br><span class="line">        Ligatures=&#123;Common&#125;,</span><br><span class="line">        Colour=AA0000]&#123;Unit-Medium&#125;</span><br><span class="line">-\setmonofont[Mapping=tex-text,Scale=0.72]&#123;PragmataPro&#125;</span><br><span class="line">+\setmonofont[Mapping=tex-text,Scale=0.72]&#123;Unit-Medium&#125;</span><br><span class="line"></span><br><span class="line"> \newfontface\scheader[SmallCapsFont=&#123;Minion Pro&#125;,SmallCapsFeatures=&#123;Letters=SmallCaps&#125;]&#123;Minion Pro&#125;</span><br><span class="line"></span><br><span class="line"> \newfontface\addressblock[Mapping=&#123;tex-text&#125;,</span><br><span class="line">        Numbers=&#123;OldStyle&#125;,</span><br><span class="line">-       Ligatures=&#123;Common&#125;]&#123;Minion Pro Medium Caption&#125;</span><br><span class="line">+       Ligatures=&#123;Common&#125;]&#123;Minion Pro&#125;</span><br><span class="line"></span><br><span class="line"> %%%------------------------------------------------------------------------</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>3.7 Execute convert [<code>latex → pdf</code>]</li>
+</ul>
+<p>As <code>pandoc</code>‘s tip, the convert should be done directly using latex endinge.</p>
+<blockquote>
+<p>[WARNING] Unusual conversion: to convert a .tex file to PDF, you get better results by using pdflatex (or lualatex or xelatex) directly, try <code>pdflatex kjh-vita.tex</code> instead of<br><code>pandoc kjh-vita.tex -o result.pdf</code>.</p>
+</blockquote>
+<p>so just use <code>xelatex</code> to do do the job.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/Desktop/kjh-vita</span><br><span class="line">xelatex kjh-vita.tex</span><br></pre></td></tr></table></figure>
+<p>then you’ll get a right formatted pdf file.</p>
+<a id="4_Work_Using_markdown_css_to_convert"/>
+
+<h5 id="4-Work-Using-markdown-amp-css-to-convert"><a href="#4-Work-Using-markdown-amp-css-to-convert" class="headerlink" title="4. [Work] Using markdown &amp; css to convert"></a>4. [Work] Using <code>markdown</code> &amp; <code>css</code> to convert</h5><blockquote>
+<p>fortunately I found a similar academic style <a target="_blank" rel="noopener" href="https://elipapa.github.io/markdown-cv/"><code>CV</code></a><br>it use jekyll to render a html, and print it with <code>browser&#39;s print funtion</code>.<br>but we don’t have to do it that way, using its css file is enough for me.<br>now We can use css file to convert markdown into <code>html</code> as a intermedia to achieved goal.<br>Using pandoc default convert html to pdf will lose the css style even with <code>-c/--css filename.css</code>.<br>However with <code>wkhtmltopdf</code>, we can use <code>-c/--css filename.css</code> to use css.</p>
+</blockquote>
+<ul>
+<li>4.1 install wkhtmltopdf</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S mingw-w64-x86_64-wkhtmltopdf-git</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>4.2 download the css file.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/elipapa/markdown-cv</span><br><span class="line"><span class="built_in">cd</span> markdown-cv</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4.3 convert</p>
+</li>
+</ul>
+<blockquote>
+<p><code>markdown → html</code> (if you only want a html)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandoc -s -c media/davewhipp-screen.css -o result.html index.md</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p><code>markdown → pdf</code> (directly convert markdown to pdf.)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandoc -t html -c media/davewhipp-print.css -o result.pdf index.md</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> <em><strong>(<code>-t --to html</code> means to convert to html, but here with the <code>result.pdf</code> <code>.pdf</code> subfix <code>pandoc</code> will convert it into pdf.)</strong></em></p>
+</blockquote>
+<p>or</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandoc --pdf-engine=wkhtmltopdf -c media/davewhipp-print.css -o result.pdf index.md </span><br></pre></td></tr></table></figure>
+<blockquote>
+<p> <em><strong>(<code>--pdf-engine</code> tell pandoc to use <code>wkhtmltopdf</code> to convert.)</strong></em></p>
+</blockquote>
+</blockquote>
+<ul>
+<li>4.4 margin<br>when you use pandoc to convert by wkhtmltopdf, it may set default margin to the pdf, if you don’t want that, use -V to set it.<blockquote>
+<p>note that all margins need to be the same according to wkhtmltopdf’s munaul.</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pandoc -f markdown -t pdf --pdf-engine=wkhtmltopdf -c media/davewhipp-screen.css -o result.pdf index.md -V margin-left=10 -V margin-right=10 -V margin-top=10 -V margin-bottom=10</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h4 id="Appendix-use-mkhtmltopdf-alone-html-→-pdf"><a href="#Appendix-use-mkhtmltopdf-alone-html-→-pdf" class="headerlink" title="Appendix: use mkhtmltopdf alone [html → pdf]"></a>Appendix: use mkhtmltopdf alone [<code>html → pdf</code>]</h4><p>  as mentioned previous you can use a css file to make markdown file rendered into a prettier pdf file. What if you don’t have a desired css file?<br>  fortunately, mkhtmltopdf is powerful, you could use it turn html to pdf directly(which is the statnard way to use it).This make it more flexible to turn you markdown file into pdf.</p>
+<blockquote>
+<p>the reason you can see markdown rendered in a pretty way in some website(like github markdown preview) or markdown editor(like typora) is that the they have render-engine&#x2F;code done it for you. the results could be different in differnt engine(which always happen). the pandoc has its own engine as well, but the rendering results cound be so plain and boring which is not we want. so what we need now is a html rendered in your flavor, and then let <code>wkhtmltopdf</code> to convert it to pdf.</p>
+</blockquote>
+<p>  it’s easy to download the html from the web, normally you just right-click and save the html file. then use <code>wkhtmltopdf</code> to do the convert.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wkhtmltopdf rendered.html result.pdf </span><br></pre></td></tr></table></figure>
+<p> ok, normally it won’t look exactly the same with the original web, both rendered.html and result.pdf. but for me it’s ok, rendering issue is too complex and I don’t wanna dive into it. Besides you could do some tweaks throuh edit the html file and css file.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/pandoc/" rel="tag"># pandoc</a>
+              <a href="/tags/pdf/" rel="tag"># pdf</a>
+              <a href="/tags/markdown/" rel="tag"># markdown</a>
+              <a href="/tags/html/" rel="tag"># html</a>
+              <a href="/tags/wkhtmltopdf/" rel="tag"># wkhtmltopdf</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/10/29/2022-10-29_Japanese-hiragana-memo/" rel="prev" title="日本語 50音 朴素笔记">
+                  <i class="fa fa-chevron-left"></i> 日本語 50音 朴素笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/01/20/2023-01-20_linux_on_win7/" rel="next" title="linux on win7">
+                  linux on win7 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">organicCola</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"neutral","dark":"default"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.3/mermaid.min.js","integrity":"sha256-TIYL00Rhw/8WaoUhYTLX9SKIEFdXxg+yMWSLVUbhiLg="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

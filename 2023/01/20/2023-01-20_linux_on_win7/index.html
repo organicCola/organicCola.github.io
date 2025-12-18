@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Cygwin、Msys、MinGW、Msys2的区别与联系近期在一台thinkpad上折腾win7, 起初是想用emacs, 发现需要一些linux上的工具链，结果发各种linux相关的环境Cygwin&#x2F;Msys&#x2F;MinGW&#x2F;Msys2…  How-does-MSYS2-differ-from-Cygwin msys2 &#x3D; cygwin1.dll + pac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux on win7">
+<meta property="og:url" content="http://example.com/2023/01/20/2023-01-20_linux_on_win7/index.html">
+<meta property="og:site_name" content="organicCola&#39;s House">
+<meta property="og:description" content="Cygwin、Msys、MinGW、Msys2的区别与联系近期在一台thinkpad上折腾win7, 起初是想用emacs, 发现需要一些linux上的工具链，结果发各种linux相关的环境Cygwin&#x2F;Msys&#x2F;MinGW&#x2F;Msys2…  How-does-MSYS2-differ-from-Cygwin msys2 &#x3D; cygwin1.dll + pac">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-01-20T16:41:15.000Z">
+<meta property="article:modified_time" content="2025-12-18T11:25:00.264Z">
+<meta property="article:author" content="organicCola">
+<meta property="article:tag" content="win7">
+<meta property="article:tag" content="emacs">
+<meta property="article:tag" content="Cygwin">
+<meta property="article:tag" content="Msys">
+<meta property="article:tag" content="MinGW">
+<meta property="article:tag" content="Msys2">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/01/20/2023-01-20_linux_on_win7/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/01/20/2023-01-20_linux_on_win7/","path":"2023/01/20/2023-01-20_linux_on_win7/","title":"linux on win7"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>linux on win7 | organicCola's House</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">organicCola's House</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Organic cola is good for your happiness</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Cygwin%E3%80%81Msys%E3%80%81MinGW%E3%80%81Msys2%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E8%81%94%E7%B3%BB"><span class="nav-number">1.</span> <span class="nav-text">Cygwin、Msys、MinGW、Msys2的区别与联系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#diff-table"><span class="nav-number">1.0.1.</span> <span class="nav-text">diff table</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#emacs-on-win"><span class="nav-number">2.</span> <span class="nav-text">emacs_on_win</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-General-config"><span class="nav-number">2.1.</span> <span class="nav-text">1. General config</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-Create-a-HOME-system-environment-variable"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.1 Create a HOME system environment variable.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-download-amp-install-msys2"><span class="nav-number">2.1.2.</span> <span class="nav-text">1.2 download &amp; install msys2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-update-msys2"><span class="nav-number">2.1.3.</span> <span class="nav-text">1.3 update msys2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-install-emacs"><span class="nav-number">2.1.4.</span> <span class="nav-text">1.4 install emacs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-run-emacs"><span class="nav-number">2.1.5.</span> <span class="nav-text">1.5 run emacs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-install-plugins"><span class="nav-number">2.1.6.</span> <span class="nav-text">1.6 install plugins</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-config-pdf-tool-amp-org-noter"><span class="nav-number">2.2.</span> <span class="nav-text">2. config pdf-tool&amp; org-noter</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-install-pdf-tool"><span class="nav-number">2.2.1.</span> <span class="nav-text">2.1 install pdf-tool</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-eval-pdf-tool-amp-org-noter-lisp-code"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.2 eval pdf-tool &amp; org-noter lisp code</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-open-pdf-amp-org-noter"><span class="nav-number">2.2.3.</span> <span class="nav-text">2.3 open pdf &amp; org-noter</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-enjoy-with-pain"><span class="nav-number">2.2.4.</span> <span class="nav-text">2.4 enjoy with pain</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">organicCola</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">103</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/01/20/2023-01-20_linux_on_win7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="organicCola">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="organicCola's House">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="linux on win7 | organicCola's House">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          linux on win7
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-01-20 16:41:15" itemprop="dateCreated datePublished" datetime="2023-01-20T16:41:15+00:00">2023-01-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Cygwin、Msys、MinGW、Msys2的区别与联系"><a href="#Cygwin、Msys、MinGW、Msys2的区别与联系" class="headerlink" title="Cygwin、Msys、MinGW、Msys2的区别与联系"></a>Cygwin、Msys、MinGW、Msys2的区别与联系</h2><p>近期在一台thinkpad上折腾win7, 起初是想用emacs, 发现需要一些linux上的工具链，结果发各种linux相关的环境Cygwin&#x2F;Msys&#x2F;MinGW&#x2F;Msys2…</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://www.msys2.org/wiki/How-does-MSYS2-differ-from-Cygwin/"><code>How-does-MSYS2-differ-from-Cygwin</code></a></li>
+<li><code>msys2</code> &#x3D; cygwin1.dll + pacman</li>
+<li><code>cygwin</code> &#x3D; cygwin1.dll + setup.exe</li>
+<li><code>mingw</code>不依赖cygwin1.dll, 是原生方式实现了少量重要的GNU工具  </li>
+<li><code>msys2</code> &#x3D; cygwin1.dll + pacman + mingw64&#x2F;clang&#x2F;ucart</li>
+</ol>
+<h4 id="diff-table"><a href="#diff-table" class="headerlink" title="diff table"></a>diff table</h4><table>
+<thead>
+<tr>
+<th>software</th>
+<th>pros&amp;cons</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Cygwin</code></td>
+<td>win上大而全的linux模拟器<br>编译出的软件在win上需要依靠虚拟层才能正常运行</td>
+</tr>
+<tr>
+<td><code>MinGW</code></td>
+<td>提供工具链，编译出来的软件是<br>windows native的<br>仅提供工具，缺少可用系统和包管理工具</td>
+</tr>
+<tr>
+<td><code>Msys2</code></td>
+<td>可提供最小可用的system<br>并有包管理工具pacman</td>
+</tr>
+<tr>
+<td>Ref:</td>
+<td><a target="_blank" rel="noopener" href="https://www.cnblogs.com/tshua/p/5932501.html"><code>Cygwin、Msys、MinGW、Msys2的区别与联系(转)</code></a></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="emacs-on-win"><a href="#emacs-on-win" class="headerlink" title="emacs_on_win"></a>emacs_on_win</h2><h3 id="1-General-config"><a href="#1-General-config" class="headerlink" title="1. General config"></a>1. General config</h3><h4 id="1-1-Create-a-HOME-system-environment-variable"><a href="#1-1-Create-a-HOME-system-environment-variable" class="headerlink" title="1.1 Create a HOME system environment variable."></a>1.1 Create a HOME system environment variable.</h4><ol>
+<li>set <code>HOME</code> variable c:&#x2F;Users&#x2F;username<br><a target="_blank" rel="noopener" href="https://github.com/doomemacs/doomemacs/blob/master/docs/getting_started.org#install"><code>read the prepare steps first before installation</code></a></li>
+<li>set symbolic link to * repository<br><code>mklink /D .emacs.d d:*\emacs.d</code></li>
+</ol>
+<h4 id="1-2-download-amp-install-msys2"><a href="#1-2-download-amp-install-msys2" class="headerlink" title="1.2 download &amp; install msys2"></a>1.2 download &amp; install msys2</h4><p>(the last version can run on win7)<br><a target="_blank" rel="noopener" href="https://repo.msys2.org/distrib/x86_64/"><code>https://repo.msys2.org/distrib/x86_64/</code></a><br>msys2-x86_64-20221028.exe<br>(you can install it in <code>d:msys64</code>)</p>
+<h4 id="1-3-update-msys2"><a href="#1-3-update-msys2" class="headerlink" title="1.3 update msys2"></a>1.3 update msys2</h4><p>execute multiple times until the last status  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Syu</span><br></pre></td></tr></table></figure>
+<h4 id="1-4-install-emacs"><a href="#1-4-install-emacs" class="headerlink" title="1.4 install emacs"></a>1.4 install emacs</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pacman -S emacs</span><br><span class="line">pacman -S mingw-w64-x86_64-emacs</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-5-run-emacs"><a href="#1-5-run-emacs" class="headerlink" title="1.5 run emacs"></a>1.5 run emacs</h4><p><code>tui</code><br>run <code>emacs</code> from Msys2-msys2<br><code>gui</code><br>run <code>emacs</code> from <code>D:\*\msys64\mingw64\bin\emacs-28.2.exe</code><br>run <code>emacs</code> from Msys2-MinGW</p>
+<h4 id="1-6-install-plugins"><a href="#1-6-install-plugins" class="headerlink" title="1.6 install plugins"></a>1.6 install plugins</h4><p>switch between emacs(cli) &amp; emacs(gui) several times to run and install packages as many as possible<br>when stuck on some <code>init-file config</code> like <code>(scroll-bar-mode -1)</code>,you can just comment it. it’s OK to do so, because we want to install asmany package, and the final aim is to use <code>pdf-tools</code> &amp; <code>org-noter</code></p>
+<h3 id="2-config-pdf-tool-amp-org-noter"><a href="#2-config-pdf-tool-amp-org-noter" class="headerlink" title="2. config pdf-tool&amp; org-noter"></a>2. config pdf-tool&amp; org-noter</h3><h4 id="2-1-install-pdf-tool"><a href="#2-1-install-pdf-tool" class="headerlink" title="2.1 install pdf-tool"></a>2.1 install pdf-tool</h4><p>run <code>pdf-tool-install</code> from emacs(gui)</p>
+<h4 id="2-2-eval-pdf-tool-amp-org-noter-lisp-code"><a href="#2-2-eval-pdf-tool-amp-org-noter-lisp-code" class="headerlink" title="2.2 eval pdf-tool &amp; org-noter lisp code"></a>2.2 eval pdf-tool &amp; org-noter lisp code</h4><p>open <code>init-org</code> from <code>D:*\emacs.d\lisp\init-org.el</code></p>
+<ol>
+<li>eval key-binding &amp; use-package related lisp code</li>
+<li>eval <code>(require &#39;org-noter_modifer)</code> to allow use custom org-noter function</li>
+<li>config linum-mode<br>before open an pdf, you have to turn linum-mode off. This could be done by adding a <code>pdf-view-mode-hook</code> hook, or you’ll stuck when try open pdf file.</li>
+</ol>
+<h4 id="2-3-open-pdf-amp-org-noter"><a href="#2-3-open-pdf-amp-org-noter" class="headerlink" title="2.3 open pdf &amp; org-noter"></a>2.3 open pdf &amp; org-noter</h4><p><code>D:\*\*.org</code><br><code>M-x</code> execute <code>org-noer</code></p>
+<h4 id="2-4-enjoy-with-pain"><a href="#2-4-enjoy-with-pain" class="headerlink" title="2.4 enjoy with pain"></a>2.4 enjoy with pain</h4>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/win7/" rel="tag"># win7</a>
+              <a href="/tags/emacs/" rel="tag"># emacs</a>
+              <a href="/tags/Cygwin/" rel="tag"># Cygwin</a>
+              <a href="/tags/Msys/" rel="tag"># Msys</a>
+              <a href="/tags/MinGW/" rel="tag"># MinGW</a>
+              <a href="/tags/Msys2/" rel="tag"># Msys2</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/01/20/2023-01-20_Writing_your_CV_in_markdown_and_convert_it_into_pdf_only_with_a_pandoc_command_all_in_cli/" rel="prev" title="Writing your CV in markdown and convert it into PDF with pandoc">
+                  <i class="fa fa-chevron-left"></i> Writing your CV in markdown and convert it into PDF with pandoc
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/02/10/2023-02-10_Annoying_Alt_as_Meta_key/" rel="next" title="Annoying Alt as Meta setting">
+                  Annoying Alt as Meta setting <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">organicCola</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"neutral","dark":"default"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.3/mermaid.min.js","integrity":"sha256-TIYL00Rhw/8WaoUhYTLX9SKIEFdXxg+yMWSLVUbhiLg="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

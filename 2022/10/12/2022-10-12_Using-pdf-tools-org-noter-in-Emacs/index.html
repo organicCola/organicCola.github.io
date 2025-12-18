@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="安装pdftools1234567(use-package pdf-tools  :ensure t  :init  (add-hook &amp;#x27;after-init-hook &amp;#x27;pdf-tools-install))安装org-noter(use-package org-noter  :ensure t) 注意：配置完之后如果打不开pdf文件还要手动M-x执行一下 ‘pdf-too">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Using pdf-tools &amp; org-noter in Emacs and add my own features">
+<meta property="og:url" content="http://example.com/2022/10/12/2022-10-12_Using-pdf-tools-org-noter-in-Emacs/index.html">
+<meta property="og:site_name" content="organicCola&#39;s House">
+<meta property="og:description" content="安装pdftools1234567(use-package pdf-tools  :ensure t  :init  (add-hook &amp;#x27;after-init-hook &amp;#x27;pdf-tools-install))安装org-noter(use-package org-noter  :ensure t) 注意：配置完之后如果打不开pdf文件还要手动M-x执行一下 ‘pdf-too">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-10-12T04:06:54.000Z">
+<meta property="article:modified_time" content="2025-12-18T11:25:00.264Z">
+<meta property="article:author" content="organicCola">
+<meta property="article:tag" content="notes">
+<meta property="article:tag" content="Emacs">
+<meta property="article:tag" content="Book Reading">
+<meta property="article:tag" content="org-noter，PDFTools">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2022/10/12/2022-10-12_Using-pdf-tools-org-noter-in-Emacs/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2022/10/12/2022-10-12_Using-pdf-tools-org-noter-in-Emacs/","path":"2022/10/12/2022-10-12_Using-pdf-tools-org-noter-in-Emacs/","title":"Using pdf-tools & org-noter in Emacs and add my own features"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Using pdf-tools & org-noter in Emacs and add my own features | organicCola's House</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">organicCola's House</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Organic cola is good for your happiness</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85pdftools"><span class="nav-number">1.</span> <span class="nav-text">安装pdftools</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9A"><span class="nav-number">1.0.1.</span> <span class="nav-text">注意：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PDFView%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">PDFView模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#org-noter"><span class="nav-number">3.</span> <span class="nav-text">org-noter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Optional-org-pdftools"><span class="nav-number">4.</span> <span class="nav-text">(Optional) org-pdftools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Summary-%E6%AF%94%E8%BE%83%EF%BC%9A"><span class="nav-number">5.</span> <span class="nav-text">Summary 比较：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AD%94%E6%94%B9%EF%BC%9A"><span class="nav-number">6.</span> <span class="nav-text">魔改：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%8D%E8%BF%87%E9%81%97%E6%86%BE%E7%9A%84%E4%BA%8Borg-noter%E5%B9%B6%E6%B2%A1%E6%9C%89%E6%8F%90%E4%BE%9B%E8%BF%99%E4%B8%AA%E6%A0%B9%E6%8D%AEorg%E6%96%87%E4%BB%B6%E5%9C%A8pdf%E4%B8%AD%E5%90%8C%E6%AD%A5%E6%8F%92%E5%85%A5%E6%A0%87%E6%B3%A8%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%8C%E4%BA%8E%E6%98%AF%E6%88%91%E5%8F%AA%E8%83%BD%E6%89%8B%E5%8A%A8%E5%86%99%E4%BA%86%E4%B8%80%E4%B8%AA%E3%80%82"><span class="nav-number">6.0.1.</span> <span class="nav-text">不过遗憾的事org-noter并没有提供这个根据org文件在pdf中同步插入标注的方法，于是我只能手动写了一个。</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">organicCola</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">103</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/12/2022-10-12_Using-pdf-tools-org-noter-in-Emacs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="organicCola">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="organicCola's House">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Using pdf-tools & org-noter in Emacs and add my own features | organicCola's House">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Using pdf-tools & org-noter in Emacs and add my own features
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-10-12 04:06:54" itemprop="dateCreated datePublished" datetime="2022-10-12T04:06:54+00:00">2022-10-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="安装pdftools"><a href="#安装pdftools" class="headerlink" title="安装pdftools"></a>安装pdftools</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(use-package pdf-tools</span><br><span class="line">  :ensure t</span><br><span class="line">  :init</span><br><span class="line">  (add-hook &#x27;after-init-hook &#x27;pdf-tools-install))</span><br><span class="line">安装org-noter</span><br><span class="line">(use-package org-noter</span><br><span class="line">  :ensure t)</span><br></pre></td></tr></table></figure>
+<h5 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h5><p>配置完之后如果打不开pdf文件还要手动M-x执行一下 ‘pdf-tools-install’</p>
+<p>原先在emacs中打开稍大点的pdf性能实在堪忧，欲Deprecated<br>仔细查看文档，原来文档里已经说了对linum mode支持不是很好，既然这样关闭pdf模式下的linum-mode就行了, 你可以写一个mode hook，在pdf-view-mode-hook下设置linum-mode 0。</p>
+<h3 id="PDFView模式"><a href="#PDFView模式" class="headerlink" title="PDFView模式"></a>PDFView模式</h3><p>pdf-tools<br><a target="_blank" rel="noopener" href="https://github.com/vedang/pdf-tools"><code>https://github.com/vedang/pdf-tools</code></a> (PDF Tools is dead, long live PDF Tools. Development continues with this fork)<br><a target="_blank" rel="noopener" href="https://github.com/politza/pdf-tools"><code>https://github.com/politza/pdf-tools</code></a> (An older&#x2F;archived one)<br>不会产生一个可以保存使用的具体文件<br>对文件的annotaion会嵌入到pdf文件中。<br>可以实现对annotation的list展示&#x2F;插入。在list中移动光标到notes，可以让pdf滚动到对应位置，一可以关闭同步滚动<br>  <code>C-c C-a l </code>: list annotation (在pdfmode 窗口中按下)<br>  <code>C-c C-f </code>  : pdf annot list follow enable&#x2F;diable (在Annots mode窗口中按下)<br>summary：是对于pdf文件的直接操作。</p>
+<h3 id="org-noter"><a href="#org-noter" class="headerlink" title="org-noter"></a>org-noter</h3><p><a target="_blank" rel="noopener" href="https://github.com/fuxialexander/org-pdftools"><code>https://github.com/weirdNox/org-noter</code></a><br>本身不带生成quota标签，需要一些手动地改造。<br>会生成一个具体文件。里面包含了pdf文件位置。<br>可以实现插入 i&#x2F;M-i 一个在pdf中不可见的notes<br>滚动pdf使得org-noter自动光标跳转到指定位置。<br>可以通过快捷键，<code>C-M-n/p/. </code> <code>Sync selected/next/current notes</code>，在pdf跳转和note在光标，两边保持同步跳动，pdf上辉县市一个对应的位置箭头<br><code>org-noter-create-skeleton</code>: 可以将pdf中的outline&#x2F;annotaion导出，与org-pdftools共存时会有bug，会出错，但是下面的org-pdftools中使用几乎同名的方法可以成功<br>summary：提供一个与pdf文件分离的annotaion文件，human-readable。通过org-noter可以实现pdf文件与annotaion文件的同步滚动。</p>
+<h3 id="Optional-org-pdftools"><a href="#Optional-org-pdftools" class="headerlink" title="(Optional) org-pdftools"></a>(Optional) org-pdftools</h3><p><a target="_blank" rel="noopener" href="https://github.com/fuxialexander/org-pdftools"><code>https://github.com/fuxialexander/org-pdftools</code></a><br>可以在pdf文件中生成一个annotation，并且生成一个连接，这个连接记录了annotaion的具体信息比如id，因此可以具体找到他。<br>依赖pdf-tool，本身和org-noter无关，但是提供了与org-noter的一些集成，比如convert旧的org-noter为新的格式<br><code>org-noter-pdftools-create-skeleton</code>：可以将pdf中的outline&#x2F;annotaion导出，org-noter的加强版，会带anno-id<br><code>org-store-link</code> 可以创建一个annotaion，并生成复制一个当前页面的url，如果有选中文字的话会在pdf中高亮，并且url也会带上该anno-id<br><code>org-insert-last-stored-link</code> 可以已经store的命令生成的url</p>
+<p><code>org-noter-pdftools-convert-old-notes</code> 旧格式到新格式：从原先NOTER_PAGE的属性转换为带id的url的形式，并且新增一个ID属性，也就是Anno-id<br><code>org-noter-pdftools-embed-all-org-note-to-pdf</code> 在上一部转换过格式之后，可以将org文件中带anno-id的head嵌入到对应的pdf对应anno中，对于不带anno-id的head，会在该页面对应行上前面生成一个圆形白点的annotation。命令会把head所有内容一股脑儿全部写入comment中，包括properties<br>summary：提供连接本身很有用，其由于其本身并不提供一些联动的功能，连接包含的信息其实org-noter里生成的head里已经包含了，只不过org-noter的信息不是具体的annotaion，而是行的位置。</p>
+<h3 id="Summary-比较："><a href="#Summary-比较：" class="headerlink" title="Summary 比较："></a>Summary 比较：</h3><p>想要在分离的标注文件里保留必要信息，并解耦，还能够和pdf保持阅读时同步滚动，这个就是org-noter在做的事情。<br>想要包含annotaion的信息，就要记录pdf里annotaion的信息，这样虽然精确，但是这样耦合就大了，pdf里的annotaion一旦变更就和org-noter里信息对不上了，所以我想这也是org-noter没有做具体annotaion记录的原因。<br>其实想要精确的记录标注信息的话除了annotaionId还有一个信息可以记录，并且耦合性不那么大，那就是annotaion的region，也就是范围，可以作为org-noter记录行号的补充，同步仍然用行号，我们不去影响org-noter原本的逻辑，但是记录的region可以用作往pdf文件中插入标注数据，因为org-noter只能在emacs环境中使用，所以pdf文件中嵌入的标注在别的平台上使用的时候也是很重要的，嵌入的标注适用范围更广。<br>注意这里嵌入标注到pdf只是一个附加选项，因为从始至终所有标注信息都保存在一个对应的org文本文件中，这很解耦，也易于保存和进行version-control，信噪比高，你不需要保存一堆pdf标注软件为你生成的数据库或者信息，因为其中很多信息并不是我们所需要的。并且很重要的是human-readable，即使在恶劣的情况下，只要有基本的文本文件阅读设备，你的标注信息就是始终可读的。</p>
+<h3 id="魔改："><a href="#魔改：" class="headerlink" title="魔改："></a>魔改：</h3><h5 id="不过遗憾的事org-noter并没有提供这个根据org文件在pdf中同步插入标注的方法，于是我只能手动写了一个。"><a href="#不过遗憾的事org-noter并没有提供这个根据org文件在pdf中同步插入标注的方法，于是我只能手动写了一个。" class="headerlink" title="不过遗憾的事org-noter并没有提供这个根据org文件在pdf中同步插入标注的方法，于是我只能手动写了一个。"></a>不过遗憾的事org-noter并没有提供这个根据org文件在pdf中同步插入标注的方法，于是我只能手动写了一个。</h5><p><a target="_blank" rel="noopener" href="https://gist.github.com/suckerSlayer/6a755c83160c0469d961d781b49b1a55"><code>Emacs pdf-tools/ org-noter setting and modifier</code></a><br>added main features:</p>
+<table>
+<thead>
+<tr>
+<th>keybind</th>
+<th>funtion</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>M-i</code></td>
+<td>create quote automatically (and insert hightlight region data into heading property)</td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td>org noter embed all org note to pdf (have to insert hightlight region data into heading property first)</td>
+</tr>
+</tbody></table>
+<p>some mine navigation keybind</p>
+<table>
+<thead>
+<tr>
+<th>keybind</th>
+<th>funtion</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>j</code></td>
+<td>scroll page up (don’t allow to across pages when reach edges)</td>
+</tr>
+<tr>
+<td><code>k</code></td>
+<td>scroll page down (don’t allow to across pages when reach edges)</td>
+</tr>
+<tr>
+<td><code>n</code></td>
+<td>scroll page up (allow to across pages when reach edges)</td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td>scroll page down (allow to across pages when reach edges)</td>
+</tr>
+</tbody></table>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/notes/" rel="tag"># notes</a>
+              <a href="/tags/Emacs/" rel="tag"># Emacs</a>
+              <a href="/tags/Book-Reading/" rel="tag"># Book Reading</a>
+              <a href="/tags/org-noter%EF%BC%8CPDFTools/" rel="tag"># org-noter，PDFTools</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/10/12/2022-10-12_A-notes-file-based-book-reading-notes-solution/" rel="prev" title="A 'notes file' based book reading notes solution - 一种以笔记文件为中心的读书笔记方案">
+                  <i class="fa fa-chevron-left"></i> A 'notes file' based book reading notes solution - 一种以笔记文件为中心的读书笔记方案
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/10/29/2022-10-29_Japanese-hiragana-memo/" rel="next" title="日本語 50音 朴素笔记">
+                  日本語 50音 朴素笔记 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">organicCola</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"neutral","dark":"default"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.3/mermaid.min.js","integrity":"sha256-TIYL00Rhw/8WaoUhYTLX9SKIEFdXxg+yMWSLVUbhiLg="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="PreHexo doesn’t support latex out of box, but some theme do.Since I use next theme which support it, I don’t need additionally use other plugins to achieve the goal. But I still have to do some config">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Using math equation in hexo with next theme">
+<meta property="og:url" content="http://example.com/2023/03/01/2023-03-01_Using-math-equation-in-hexo-with-next-theme/index.html">
+<meta property="og:site_name" content="organicCola&#39;s House">
+<meta property="og:description" content="PreHexo doesn’t support latex out of box, but some theme do.Since I use next theme which support it, I don’t need additionally use other plugins to achieve the goal. But I still have to do some config">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-01T16:50:56.000Z">
+<meta property="article:modified_time" content="2025-12-18T11:25:00.264Z">
+<meta property="article:author" content="organicCola">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="next">
+<meta property="article:tag" content="markdown">
+<meta property="article:tag" content="latex">
+<meta property="article:tag" content="mathjax">
+<meta property="article:tag" content="mathEquation">
+<meta property="article:tag" content="mathematics">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/03/01/2023-03-01_Using-math-equation-in-hexo-with-next-theme/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/03/01/2023-03-01_Using-math-equation-in-hexo-with-next-theme/","path":"2023/03/01/2023-03-01_Using-math-equation-in-hexo-with-next-theme/","title":"Using math equation in hexo with next theme"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Using math equation in hexo with next theme | organicCola's House</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">organicCola's House</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Organic cola is good for your happiness</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pre"><span class="nav-number">1.</span> <span class="nav-text">Pre</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Steps"><span class="nav-number">2.</span> <span class="nav-text">Steps</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Enable-the-mathjax-in-next-theme-config"><span class="nav-number">2.1.</span> <span class="nav-text">Enable the mathjax in next-theme config</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#add-the-meta-in-the-post-file"><span class="nav-number">2.2.</span> <span class="nav-text">add the meta in the post file</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample"><span class="nav-number">3.</span> <span class="nav-text">Sample</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Inline-Formula"><span class="nav-number">3.1.</span> <span class="nav-text">Inline Formula</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Display-Formula"><span class="nav-number">3.2.</span> <span class="nav-text">Display Formula</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Some-issues"><span class="nav-number">4.</span> <span class="nav-text">Some issues</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Simpler-way-use-different-linebreak-symbol"><span class="nav-number">4.1.</span> <span class="nav-text">Simpler way: use different linebreak symbol</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#maually-escape-the-backslash"><span class="nav-number">4.1.1.</span> <span class="nav-text">maually escape the backslash</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#use-newline"><span class="nav-number">4.1.2.</span> <span class="nav-text">use \newline</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Maybe-harder-way-Use-other-render-engine"><span class="nav-number">4.2.</span> <span class="nav-text">Maybe harder way: Use other render engine</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#pros"><span class="nav-number">4.2.1.</span> <span class="nav-text">pros</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#cons"><span class="nav-number">4.2.2.</span> <span class="nav-text">cons</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#cons-1-extra-blank-line"><span class="nav-number">4.2.2.1.</span> <span class="nav-text">cons_1. extra blank line</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#cons-2-embed-resources-issues"><span class="nav-number">4.2.2.2.</span> <span class="nav-text">cons_2. embed resources issues</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Appendix-More-sample"><span class="nav-number">5.</span> <span class="nav-text">Appendix: More sample</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Multiple-Aligned-Equations"><span class="nav-number">5.1.</span> <span class="nav-text">Multiple Aligned Equations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Use-tag-to-Tag-Equations"><span class="nav-number">5.2.</span> <span class="nav-text">Use \tag to Tag Equations</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#try-lt-p-gt"><span class="nav-number">5.3.</span> <span class="nav-text">try &lt;p&gt;</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">organicCola</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">103</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/03/01/2023-03-01_Using-math-equation-in-hexo-with-next-theme/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="organicCola">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="organicCola's House">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Using math equation in hexo with next theme | organicCola's House">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Using math equation in hexo with next theme
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-03-01 16:50:56" itemprop="dateCreated datePublished" datetime="2023-03-01T16:50:56+00:00">2023-03-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="Pre"><a href="#Pre" class="headerlink" title="Pre"></a>Pre</h3><p>Hexo doesn’t support latex out of box, but some theme do.<br>Since I use <code>next theme</code> which support it, I don’t need additionally use other plugins to achieve the goal. But I still have to do some config to make it work better.</p>
+<h3 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h3><h4 id="Enable-the-mathjax-in-next-theme-config"><a href="#Enable-the-mathjax-in-next-theme-config" class="headerlink" title="Enable the mathjax in next-theme config"></a>Enable the mathjax in next-theme config</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">//</span> <span class="string">themes/next/_config.yml</span></span><br><span class="line"></span><br><span class="line"> <span class="attr">math:</span></span><br><span class="line"> <span class="comment"># Default (false) will load mathjax / katex script on demand.</span></span><br><span class="line"> <span class="comment"># That is it only render those page which has `mathjax: true` in front-matter.</span></span><br><span class="line"> <span class="comment"># If you set it to true, it will load mathjax / katex script EVERY PAGE.</span></span><br><span class="line"> <span class="attr">every_page:</span> <span class="literal">false</span></span><br><span class="line"> <span class="attr">mathjax:</span></span><br><span class="line">   <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">   <span class="attr">tags:</span> <span class="string">ams</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="add-the-meta-in-the-post-file"><a href="#add-the-meta-in-the-post-file" class="headerlink" title="add the meta in the post file"></a>add the meta in the post file</h4><p>if you didn’t set the <code>every_page</code> to <code>true</code>, then you have to set the metadata info <code>mathjax: true</code> in the disered post</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: the disered post</span><br><span class="line"><span class="section">mathjax: true</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h3><h4 id="Inline-Formula"><a href="#Inline-Formula" class="headerlink" title="Inline Formula"></a>Inline Formula</h4><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">We all know that <span class="built_in">$</span>1+1=2<span class="built_in">$</span></span><br></pre></td></tr></table></figure>
+<p>We all know that $1+1&#x3D;2$</p>
+<h4 id="Display-Formula"><a href="#Display-Formula" class="headerlink" title="Display Formula"></a>Display Formula</h4><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$</span><span class="built_in">$</span><span class="keyword">\begin</span>&#123;equation&#125; <span class="keyword">\label</span>&#123;eq1&#125;</span><br><span class="line">e=mc<span class="built_in">^</span>2</span><br><span class="line"><span class="keyword">\end</span>&#123;equation&#125;<span class="built_in">$</span><span class="built_in">$</span></span><br><span class="line">The famous matter-energy equation <span class="built_in">$</span><span class="keyword">\eqref</span>&#123;eq1&#125;<span class="built_in">$</span> proposed by Einstein...</span><br></pre></td></tr></table></figure>
+<p>$$\begin{equation} \label{eq1}<br>e&#x3D;mc^2<br>\end{equation}$$<br>The famous matter-energy equation $\eqref{eq1}$ proposed by Einstein…</p>
+<h3 id="Some-issues"><a href="#Some-issues" class="headerlink" title="Some issues"></a>Some issues</h3><p>The hexo default markdown render engine ‘marked’ will cause some issues when render the <code>Multi-line Equations</code>.<br>In latex,<code>\\</code> will inset a new line in <code>Multi-line Equations</code>.<br>But in <code>marked</code> engine, the double backslash <code>\\</code> will be escaped to <code>\</code>, which cause the render failure.</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$</span><span class="built_in">$</span><span class="keyword">\begin</span>&#123;equation&#125; <span class="keyword">\label</span>&#123;eq2&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;aligned&#125;</span><br><span class="line">a <span class="built_in">&amp;</span>= b + c   <span class="keyword">\\</span></span><br><span class="line">  <span class="built_in">&amp;</span>= d + e + f + g   <span class="keyword">\\</span></span><br><span class="line">  <span class="built_in">&amp;</span>= h + i</span><br><span class="line"><span class="keyword">\end</span>&#123;aligned&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;equation&#125;<span class="built_in">$</span><span class="built_in">$</span></span><br></pre></td></tr></table></figure>
+<p>$$\begin{equation} \label{eq2}<br>\begin{aligned}<br>a &amp;&#x3D; b + c   \<br>  &amp;&#x3D; d + e + f + g   \<br>  &amp;&#x3D; h + i<br>\end{aligned}<br>\end{equation}$$</p>
+<p>as you see, the Multi-line Equations $\eqref{eq2}$ didn’t display correctly<br>Fortunately, you have at least two options to fix it.</p>
+<h4 id="Simpler-way-use-different-linebreak-symbol"><a href="#Simpler-way-use-different-linebreak-symbol" class="headerlink" title="Simpler way: use different linebreak symbol"></a>Simpler way: use different linebreak symbol</h4><h5 id="maually-escape-the-backslash"><a href="#maually-escape-the-backslash" class="headerlink" title="maually escape the backslash"></a>maually escape the backslash</h5><p>A simple way to fix it is that use <code>\\\\</code> to generate the escaped double backslash, and pass <code>\\</code> to <code>next-theme</code>‘s <code>mathjax</code> engine correctly.</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$</span><span class="built_in">$</span><span class="keyword">\begin</span>&#123;equation&#125; <span class="keyword">\label</span>&#123;eqcorrect&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;aligned&#125;</span><br><span class="line">a <span class="built_in">&amp;</span>= b + c   <span class="keyword">\\</span><span class="keyword">\\</span></span><br><span class="line">  <span class="built_in">&amp;</span>= d + e + f + g   <span class="keyword">\\</span><span class="keyword">\\</span></span><br><span class="line">  <span class="built_in">&amp;</span>= h + i</span><br><span class="line"><span class="keyword">\end</span>&#123;aligned&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;equation&#125;<span class="built_in">$</span><span class="built_in">$</span></span><br></pre></td></tr></table></figure>
+<p>$$\begin{equation} \label{eqcorrect}<br>\begin{aligned}<br>a &amp;&#x3D; b + c   \\<br>  &amp;&#x3D; d + e + f + g   \\<br>  &amp;&#x3D; h + i<br>\end{aligned}<br>\end{equation}$$</p>
+<blockquote>
+<p>tips: but due to difference between other render engines, <code>\\\\</code> may render as two linebreaks on it, such as <code>marked</code> engine inside the <code>Obsidian</code>.</p>
+</blockquote>
+<h5 id="use-newline"><a href="#use-newline" class="headerlink" title="use \newline"></a>use <code>\newline</code></h5><p><code>\newline</code> works the same way as <code>\\</code> in <code>latex</code> syntax, and since <code>marked</code> will not escape <code>\newline</code>, it’s more compatible between different markdown render engine.</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$</span><span class="built_in">$</span><span class="keyword">\begin</span>&#123;equation&#125; <span class="keyword">\label</span>&#123;eqcorrect2&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;aligned&#125;</span><br><span class="line">a <span class="built_in">&amp;</span>= b + c   <span class="keyword">\newline</span></span><br><span class="line">  <span class="built_in">&amp;</span>= d + e + f + g   <span class="keyword">\\</span><span class="keyword">\\</span></span><br><span class="line">  <span class="built_in">&amp;</span>= h + i</span><br><span class="line"><span class="keyword">\end</span>&#123;aligned&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;equation&#125;<span class="built_in">$</span><span class="built_in">$</span></span><br></pre></td></tr></table></figure>
+<p>$$\begin{equation} \label{eqcorrect2}<br>\begin{aligned}<br>a &amp;&#x3D; b + c   \newline<br>  &amp;&#x3D; d + e + f + g   \\<br>  &amp;&#x3D; h + i<br>\end{aligned}<br>\end{equation}$$</p>
+<h4 id="Maybe-harder-way-Use-other-render-engine"><a href="#Maybe-harder-way-Use-other-render-engine" class="headerlink" title="Maybe harder way: Use other render engine"></a>Maybe harder way: Use other render engine</h4><p>Alternately, you could use another markdown render engine. like <code>pandoc</code> which is recommended by the <code>next-theme</code> officially.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm un hexo-renderer-marked</span><br><span class="line">$ npm i hexo-renderer-pandoc</span><br></pre></td></tr></table></figure>
+
+<h5 id="pros"><a href="#pros" class="headerlink" title="pros"></a>pros</h5><p>It could render the math Formula correctly, no more ugly <code>\\\\</code> thing, and the md content is basically standard, which makes it easier to edit or render with other editor or engine, like Emacs.</p>
+<h5 id="cons"><a href="#cons" class="headerlink" title="cons"></a>cons</h5><h6 id="cons-1-extra-blank-line"><a href="#cons-1-extra-blank-line" class="headerlink" title="cons_1. extra blank line"></a>cons_1. extra blank line</h6><p>If you are familiar with the default marked flavor markdown, you could possibly need some modification with pandoc config. Pandoc won’t create newline when it comes with a single enter, you have to use the standard way: <code>double space at the end of line</code><br>you could fix it with config in the hexo config. </p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">pandoc:</span></span><br><span class="line">  <span class="attr">extensions:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&quot;+hard_line_breaks&quot;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>However, it will bring another issue, this will cause pandoc insert extra <code>&lt;br&gt;</code> tags around the <code>&lt;span&gt;</code> tag which the math formula are wrapped in, blank around the formula will make it looks not so good.<br>at least two way to fix it as I know:</p>
+<ol>
+<li>But you could solve it with by adding <code>&lt;br&gt;</code> tags or blanks line around the <code>display formula</code>.</li>
+<li>modify the package source code to use a github flavor markdown<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// node_modules/hexo-renderer-pandoc/index.js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//var args = [ &#x27;-f&#x27;, &#x27;markdown-smart&#x27;+extensions, &#x27;-t&#x27;, &#x27;html-smart&#x27;, math]</span></span><br><span class="line"><span class="keyword">var</span> args = [ <span class="string">&#x27;-f&#x27;</span>, <span class="string">&#x27;gfm&#x27;</span>+extensions, <span class="string">&#x27;-t&#x27;</span>, <span class="string">&#x27;html-smart&#x27;</span>, math]</span><br></pre></td></tr></table></figure></li>
+</ol>
+</blockquote>
+<h6 id="cons-2-embed-resources-issues"><a href="#cons-2-embed-resources-issues" class="headerlink" title="cons_2. embed resources issues"></a>cons_2. embed resources issues</h6><ul>
+<li>Another thing is that pandoc doesn’t support embed sources like pictures in local relative path out of box, maybe you could config it – I didn’t try that.</li>
+</ul>
+<h3 id="Appendix-More-sample"><a href="#Appendix-More-sample" class="headerlink" title="Appendix: More sample"></a>Appendix: More sample</h3><h4 id="Multiple-Aligned-Equations"><a href="#Multiple-Aligned-Equations" class="headerlink" title="Multiple Aligned Equations"></a>Multiple Aligned Equations</h4><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$</span><span class="built_in">$</span><span class="keyword">\begin</span>&#123;align&#125;</span><br><span class="line">a <span class="built_in">&amp;</span>= b + c <span class="keyword">\label</span>&#123;eq4&#125; <span class="keyword">\newline</span></span><br><span class="line">x <span class="built_in">&amp;</span>= yz <span class="keyword">\label</span>&#123;eq5&#125; <span class="keyword">\newline</span></span><br><span class="line">l <span class="built_in">&amp;</span>= m - n <span class="keyword">\label</span>&#123;eq6&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;align&#125;<span class="built_in">$</span><span class="built_in">$</span></span><br><span class="line">There are three aligned equations: equation <span class="built_in">$</span><span class="keyword">\eqref</span>&#123;eq4&#125;<span class="built_in">$</span>, equation <span class="built_in">$</span><span class="keyword">\eqref</span>&#123;eq5&#125;<span class="built_in">$</span> and equation <span class="built_in">$</span><span class="keyword">\eqref</span>&#123;eq6&#125;<span class="built_in">$</span>.</span><br></pre></td></tr></table></figure>
+<p>$$\begin{align}<br>a &amp;&#x3D; b + c \label{eq4} \newline<br>x &amp;&#x3D; yz \label{eq5} \newline<br>l &amp;&#x3D; m - n \label{eq6}<br>\end{align}$$<br>There are three aligned equations: equation $\eqref{eq4}$, equation $\eqref{eq5}$ and equation $\eqref{eq6}$.</p>
+<h4 id="Use-tag-to-Tag-Equations"><a href="#Use-tag-to-Tag-Equations" class="headerlink" title="Use \tag to Tag Equations"></a>Use <code>\tag</code> to Tag Equations</h4><figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">$</span><span class="built_in">$</span>x+1<span class="keyword">\over</span><span class="keyword">\sqrt</span>&#123;1-x<span class="built_in">^</span>2&#125; <span class="keyword">\tag</span>&#123;i&#125;<span class="keyword">\label</span>&#123;eq<span class="built_in">_</span>tag&#125;<span class="built_in">$</span><span class="built_in">$</span></span><br><span class="line">Equation <span class="built_in">$</span><span class="keyword">\eqref</span>&#123;eq<span class="built_in">_</span>tag&#125;<span class="built_in">$</span> use `<span class="keyword">\tag</span>&#123;&#125;` instead of automatic numbering.</span><br></pre></td></tr></table></figure>
+<p>$$x+1\over\sqrt{1-x^2} \tag{i}\label{eq_tag}$$<br>Equation $\eqref{eq_tag}$ use <code>\tag&#123;&#125;</code> instead of automatic numbering.</p>
+<h4 id="try-lt-p-gt"><a href="#try-lt-p-gt" class="headerlink" title="try &lt;p&gt;"></a>try <code>&lt;p&gt;</code></h4><p>When you use some <code>Tex commands</code> that can’t be recognized by markdown render engine, use wrap it with <code>&lt;p&gt;</code>, so that markdown render engine won’t process it, instead passing the raw content to the math equation render engine like <code>MathJax</code>, the math render engine usually can handle it.</p>
+<figure class="highlight latex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;</span><br><span class="line"><span class="built_in">$</span><span class="built_in">$</span> <span class="keyword">\begin</span>&#123;aligned&#125;</span><br><span class="line">ax<span class="built_in">^</span>2+ <span class="built_in">&amp;</span>bx+c=0 <span class="keyword">\\</span></span><br><span class="line"><span class="built_in">&amp;</span><span class="keyword">\sideset</span> &#123;<span class="built_in">^</span>&#123;a<span class="built_in">_</span>1&#125;<span class="built_in">_</span>&#123;a<span class="built_in">_</span>2&#125;&#125;&#123;<span class="built_in">^</span>&#123;c<span class="built_in">_</span>1&#125;<span class="built_in">_</span>&#123;c<span class="built_in">_</span>2&#125;&#125; <span class="keyword">\times</span></span><br><span class="line"><span class="keyword">\end</span>&#123;aligned&#125; <span class="built_in">$</span><span class="built_in">$</span></span><br><span class="line">&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/hexo/" rel="tag"># hexo</a>
+              <a href="/tags/next/" rel="tag"># next</a>
+              <a href="/tags/markdown/" rel="tag"># markdown</a>
+              <a href="/tags/latex/" rel="tag"># latex</a>
+              <a href="/tags/mathjax/" rel="tag"># mathjax</a>
+              <a href="/tags/mathEquation/" rel="tag"># mathEquation</a>
+              <a href="/tags/mathematics/" rel="tag"># mathematics</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/02/18/2023-02-19_Tricky-way-to-trigger-Meta-n-in-Alacritty-on-MacOS/" rel="prev" title="Tricky way to trigger Meta+n in Alacritty on MacOS">
+                  <i class="fa fa-chevron-left"></i> Tricky way to trigger Meta+n in Alacritty on MacOS
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/03/08/2023-03-08_drag-scroll-bar-on-iOS/" rel="next" title="村网通：Drag scroll bar on iOS">
+                  村网通：Drag scroll bar on iOS <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">organicCola</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"neutral","dark":"default"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.3/mermaid.min.js","integrity":"sha256-TIYL00Rhw/8WaoUhYTLX9SKIEFdXxg+yMWSLVUbhiLg="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

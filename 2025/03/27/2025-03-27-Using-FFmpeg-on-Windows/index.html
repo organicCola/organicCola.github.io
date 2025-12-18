@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="PreGot some videos to process with, task was simple, so don’t wanna use a gui app like davinci pr or whatever.And cli based ffmpeg is an option. IssuePlatformMost tutorial or usage cases are based on">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Using FFmpeg on Windows">
+<meta property="og:url" content="http://example.com/2025/03/27/2025-03-27-Using-FFmpeg-on-Windows/index.html">
+<meta property="og:site_name" content="organicCola&#39;s House">
+<meta property="og:description" content="PreGot some videos to process with, task was simple, so don’t wanna use a gui app like davinci pr or whatever.And cli based ffmpeg is an option. IssuePlatformMost tutorial or usage cases are based on">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-03-27T12:07:26.000Z">
+<meta property="article:modified_time" content="2025-12-18T11:25:00.265Z">
+<meta property="article:author" content="organicCola">
+<meta property="article:tag" content="Powershell">
+<meta property="article:tag" content="FFmpeg">
+<meta property="article:tag" content="wsl">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2025/03/27/2025-03-27-Using-FFmpeg-on-Windows/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2025/03/27/2025-03-27-Using-FFmpeg-on-Windows/","path":"2025/03/27/2025-03-27-Using-FFmpeg-on-Windows/","title":"Using FFmpeg on Windows"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Using FFmpeg on Windows | organicCola's House</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">organicCola's House</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Organic cola is good for your happiness</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pre"><span class="nav-number">1.</span> <span class="nav-text">Pre</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Issue"><span class="nav-number">2.</span> <span class="nav-text">Issue</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Platform"><span class="nav-number">2.1.</span> <span class="nav-text">Platform</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tweaks-on-Windows"><span class="nav-number">2.2.</span> <span class="nav-text">Tweaks on Windows</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#installation"><span class="nav-number">2.3.</span> <span class="nav-text">installation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Typical-error"><span class="nav-number">2.4.</span> <span class="nav-text">Typical error</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#usage-case"><span class="nav-number">3.</span> <span class="nav-text">usage case</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#escape-char"><span class="nav-number">3.1.</span> <span class="nav-text">escape char</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#date-function"><span class="nav-number">3.2.</span> <span class="nav-text">date function</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#in-wsl"><span class="nav-number">4.</span> <span class="nav-text">in wsl</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Appendix-Other-usage-cases"><span class="nav-number">5.</span> <span class="nav-text">Appendix: Other usage cases</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ref"><span class="nav-number">5.1.</span> <span class="nav-text">ref</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">organicCola</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">103</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/03/27/2025-03-27-Using-FFmpeg-on-Windows/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="organicCola">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="organicCola's House">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Using FFmpeg on Windows | organicCola's House">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Using FFmpeg on Windows
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-03-27 12:07:26" itemprop="dateCreated datePublished" datetime="2025-03-27T12:07:26+00:00">2025-03-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="Pre"><a href="#Pre" class="headerlink" title="Pre"></a>Pre</h3><p>Got some videos to process with, task was simple, so don’t wanna use a gui app like davinci pr or whatever.<br>And cli based ffmpeg is an option.</p>
+<h3 id="Issue"><a href="#Issue" class="headerlink" title="Issue"></a>Issue</h3><h4 id="Platform"><a href="#Platform" class="headerlink" title="Platform"></a>Platform</h4><p>Most tutorial or usage cases are based on linux, after all FFmpeg is widely used by programers which more likely using a linux.<br>However there is a high chance that your best performance computer is with an Windows OS. If you don’t wanna install a <code>wsl</code>, you could still use a <code>msys2</code> porject compiled version.<br>Besides it got some glitches on file system communication between wsl and Windows, and may cause system laggy occasionally, so I think it may better to execute task in Windows directly.</p>
+<h4 id="Tweaks-on-Windows"><a href="#Tweaks-on-Windows" class="headerlink" title="Tweaks on Windows"></a>Tweaks on Windows</h4><ul>
+<li>You may wanna try these commands in powershell, cmd is little limited on interaction for these command.</li>
+<li>And you have to deal with escape character in powershell, which is different from in linux.</li>
+<li>Windows has its own <code>date</code> function, which is conflicted with the one in the usage cases from most tutorial.<br>based on the above, you have to made some tweaks.</li>
+</ul>
+<h4 id="installation"><a href="#installation" class="headerlink" title="installation"></a>installation</h4><p>comparing with download binary file manually, it’s simple to install it with <code>winget</code>.</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">winget install ffmpeg</span><br></pre></td></tr></table></figure>
+
+<h4 id="Typical-error"><a href="#Typical-error" class="headerlink" title="Typical error"></a>Typical error</h4><p>a parse error, something like below, usually caused by wrong <code>escape character</code>, misplaced punctuation.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Unable to parse option value <span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<p>a syntax error, something like below, usually it</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Either text, a valid file, a timecode or text <span class="built_in">source</span> must be provided</span><br></pre></td></tr></table></figure>
+
+<h3 id="usage-case"><a href="#usage-case" class="headerlink" title="usage case"></a>usage case</h3><p>some cases involved with <code>date</code> function</p>
+<h4 id="escape-char"><a href="#escape-char" class="headerlink" title="escape char"></a>escape char</h4><p>the colon must be <code>escaped</code> with <code>escape char</code></p>
+<blockquote>
+<p>elapsed time watermark</p>
+</blockquote>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg <span class="literal">-i</span> output_final.mp4 <span class="literal">-vf</span> <span class="string">&quot;drawtext=text=&#x27;\%\&#123;pts\:hms\&#125;&#x27;:fontfile=&#x27;C\:/Windows/Fonts/arial.ttf&#x27;:fontcolor=white:fontsize=36:x=10:y=10&quot;</span> output_final_timed.mp4</span><br></pre></td></tr></table></figure>
+
+<h4 id="date-function"><a href="#date-function" class="headerlink" title="date function"></a><code>date</code> function</h4><p>use a Windows <code>date</code>, this <code>date</code> is different from most tutorial you could find.<br>if you use the below one directly, it will fail, because you’re treating a Windows <code>date</code> function with a linux <code>date</code> syntax.</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg <span class="literal">-i</span> sample.mp4 <span class="literal">-vf</span> <span class="string">&quot;drawtext=text=<span class="variable">$</span>(date +%s):fontfile=&#x27;C\:/Windows/Fonts/arial.ttf&#x27;:fontcolor=white:fontsize=36:x=90:y=10&quot;</span> output_formated.mp4</span><br><span class="line"><span class="built_in">Get-Date</span> : can<span class="string">&#x27;t bind &quot;Date&quot;...</span></span><br></pre></td></tr></table></figure>
+<p>instead you should do this to use Windows date function syntax.</p>
+<blockquote>
+<p>date and time watermark</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$startTimeSeconds</span> = [int64](Get-Date -Year 2024 -Month 10 -Day 13 -Hour 14 -Minute 10 -Second 50 -UFormat %s)</span><br><span class="line">ffmpeg -i sample.mp4 -vf <span class="string">&quot;drawtext=expansion=strftime:basetime=<span class="subst">$($startTimeSeconds)</span>000000:fontfile=&#x27;C\:/Windows/Fonts/arial.ttf&#x27;:fontcolor=white:fontsize=36:x=40:y=10:text=&#x27;%Y-%m-%d %H\:%M\: %S&#x27;&quot;</span> output_formated.mp4</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>if you just wanna use a <code>date</code> from linux, you could use <code>$(wsl date)</code></p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg -i sample.mp4 -vf <span class="string">&quot;drawtext=text=<span class="subst">$(wsl date +%s -d &#x27;2018-10-13 14:10:50&#x27;)</span>000000:fontfile=&#x27;C\:/Windows/Fonts/arial.ttf&#x27;:fontcolor=white:fontsize=36:x=40:y=10:text=&#x27;%Y-%m-%d %H\:%M\: %S&#x27;&quot;</span> output_formated.mp4</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p> <code>basetime</code>: A confusing ffmpeg parameter<br>Be careful with those <code>000000</code> at the end of the <code>basetime</code> parameter, if it’s not there the start time will not be what we assigned.<br>The reason why this happen is because the <code>basetime</code> accept a designated length variable, the string converted from <code>date</code> is not comatible with it, but we could complete it with <code>000000</code>.<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/8b3beb949485">ref: ffmpeg添加动态时间戳的问题</a></p>
+</blockquote>
+<h3 id="in-wsl"><a href="#in-wsl" class="headerlink" title="in wsl"></a>in wsl</h3><p>Of course you could install wsl and install ffmpeg in it, and execute tasks from there. Then most cases from tutorial could be executed flawlessly without annoying tweaks.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install ffmpeg</span><br><span class="line">ffmpeg -i sample.mp4 -vf drawtext=<span class="string">&quot;expansion=strftime:basetime=<span class="subst">$(date +%s -d &#x27;2024-10-13 14:10:50&#x27;)</span>:fontfile=arial.ttf:x=w-tw:fontcolor=red:fontsize=30:text=&#x27;%Y-%m-%d  %H\:%M\: %S&#x27;&quot;</span> output_formated.mp4</span><br></pre></td></tr></table></figure>
+
+<h3 id="Appendix-Other-usage-cases"><a href="#Appendix-Other-usage-cases" class="headerlink" title="Appendix: Other usage cases"></a>Appendix: Other usage cases</h3><blockquote>
+<p>corp</p>
+</blockquote>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg <span class="literal">-i</span> sample.mp4 <span class="literal">-filter</span>:v <span class="string">&quot;crop=1724:970:98:110,scale=1920:1080&quot;</span> output_final.mp4</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>delogo</p>
+</blockquote>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ffmpeg <span class="literal">-i</span> sample.mp4 <span class="literal">-b</span>:v <span class="number">548</span>k <span class="literal">-vf</span> delogo=x=<span class="number">1</span>:y=<span class="number">55</span>:w=<span class="number">720</span>:<span class="built_in">h</span>=<span class="number">55</span>:show=<span class="number">1</span> delogo_1_55_720_55.mp4</span><br></pre></td></tr></table></figure>
+<h4 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h4><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/iceworld520/p/9783579.html">ref: ffmpeg 踩坑实录 添加实时水印（二）</a><br><a target="_blank" rel="noopener" href="https://ffmpeg.org/ffmpeg.html">ref: ffmpeg Documentation </a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Powershell/" rel="tag"># Powershell</a>
+              <a href="/tags/FFmpeg/" rel="tag"># FFmpeg</a>
+              <a href="/tags/wsl/" rel="tag"># wsl</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/03/20/2025-03-20-Clash-blocked-by-windows-firewall/" rel="prev" title="Clash blocked by Windows firewall">
+                  <i class="fa fa-chevron-left"></i> Clash blocked by Windows firewall
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/05/25/2025-05-25_Find-a-classic-bricks-break-PC-game-in-Year-2005--Wilkanoid/" rel="next" title="Find a classic bricks break PC game in Year 2005 -- Wilkanoid">
+                  Find a classic bricks break PC game in Year 2005 -- Wilkanoid <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">organicCola</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"neutral","dark":"default"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.3/mermaid.min.js","integrity":"sha256-TIYL00Rhw/8WaoUhYTLX9SKIEFdXxg+yMWSLVUbhiLg="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

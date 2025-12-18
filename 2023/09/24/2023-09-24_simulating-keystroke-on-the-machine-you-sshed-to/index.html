@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="PreAssuming you have a machine connected to a monitor or television as a movie player, and the tv maybe keep a distance from you since you wouldn’t like to watch movies so close to it. IssueThe machin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="simulating keystroke on the remote machine you sshed to">
+<meta property="og:url" content="http://example.com/2023/09/24/2023-09-24_simulating-keystroke-on-the-machine-you-sshed-to/index.html">
+<meta property="og:site_name" content="organicCola&#39;s House">
+<meta property="og:description" content="PreAssuming you have a machine connected to a monitor or television as a movie player, and the tv maybe keep a distance from you since you wouldn’t like to watch movies so close to it. IssueThe machin">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-09-24T05:59:19.000Z">
+<meta property="article:modified_time" content="2025-12-18T11:25:00.265Z">
+<meta property="article:author" content="organicCola">
+<meta property="article:tag" content="ssh">
+<meta property="article:tag" content="keyboard">
+<meta property="article:tag" content="remote">
+<meta property="article:tag" content="osascript">
+<meta property="article:tag" content="mac">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2023/09/24/2023-09-24_simulating-keystroke-on-the-machine-you-sshed-to/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2023/09/24/2023-09-24_simulating-keystroke-on-the-machine-you-sshed-to/","path":"2023/09/24/2023-09-24_simulating-keystroke-on-the-machine-you-sshed-to/","title":"simulating keystroke on the remote machine you sshed to"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>simulating keystroke on the remote machine you sshed to | organicCola's House</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">organicCola's House</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Organic cola is good for your happiness</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pre"><span class="nav-number">1.</span> <span class="nav-text">Pre</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Issue"><span class="nav-number">2.</span> <span class="nav-text">Issue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">3.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Source"><span class="nav-number">4.</span> <span class="nav-text">Source</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">organicCola</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">103</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2023/09/24/2023-09-24_simulating-keystroke-on-the-machine-you-sshed-to/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="organicCola">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="organicCola's House">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="simulating keystroke on the remote machine you sshed to | organicCola's House">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          simulating keystroke on the remote machine you sshed to
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2023-09-24 05:59:19" itemprop="dateCreated datePublished" datetime="2023-09-24T05:59:19+00:00">2023-09-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/technology/" itemprop="url" rel="index"><span itemprop="name">technology</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="Pre"><a href="#Pre" class="headerlink" title="Pre"></a>Pre</h3><p>Assuming you have a machine connected to a monitor or television as a movie player, and the tv maybe keep a distance from you since you wouldn’t like to watch movies so close to it.</p>
+<h3 id="Issue"><a href="#Issue" class="headerlink" title="Issue"></a>Issue</h3><p>The machine is away from you which make it inconvenient to control it.</p>
+<ol>
+<li>Physical way: connect a keyboard with long wire or a wireless bluetooth one. For mouse, options are few here, a wireless one should be great.</li>
+<li>Remote way: use another machine to control it.</li>
+</ol>
+<span id="more"></span>
+
+<p>Since I don’t have a wireless keyboard, I’d like to try the remote way.<br>Also I don’t want a keyboard lie besides my pillow, but I can bear a computer though since I have to use it anyway.</p>
+<p>It’s easy to imageine that there’re some softwares focusing on solving this kind of problem by control mouse and keyboard input remotely.<br>However they’re almost all gui based tools, which is unfriendly for me, because I’d like to work in a pure tty with archlinux or something.</p>
+<p>So I have to make it work on my own.</p>
+<h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><ol>
+<li>Ssh into the remote machine, </li>
+<li>Read the keyboard input</li>
+<li>Since the remote one is a macbook, I have to execute osascript to simulate keyboard keystroke according to the input read from terminal.<br>We achieve this by writing a script to receive the input and convert it into a osascript.<br>When you want to simulate the keyboard input, execute the script.</li>
+</ol>
+<pre><code class="highlight mermaid">flowchart LR
+
+    subgraph B[By side Machine]
+        t(tty)
+    end
+
+    t -.- |ssh| T
+    t --&gt; |input| s
+
+    subgraph R[Remote Machie]
+       subgraph T[terminal]
+        s(sh script)
+       end
+        s --&gt; o(osascript)
+        o --&gt; k
+       subgraph k[simulate keyboard]
+       end
+     end
+</code></pre>
+
+<h3 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h3><p>This is a very basic and rough one, you should edit it to make it work better.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /bin/bash</span></span><br><span class="line"></span><br><span class="line">IFS=<span class="string">&quot;&quot;</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">true</span>; <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">read</span> -rsn1 input</span><br><span class="line">  <span class="keyword">case</span> <span class="string">&quot;<span class="variable">$input</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;1&quot;</span>)</span><br><span class="line">      osascript -e <span class="string">&#x27;tell application &quot;System Events&quot; to keystroke &quot;1&quot;&#x27;</span></span><br><span class="line">      ;;</span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;a&quot;</span>)</span><br><span class="line">      osascript -e <span class="string">&#x27;tell application &quot;System Events&quot; to keystroke &quot;a&quot;&#x27;</span></span><br><span class="line">      ;;</span><br><span class="line">    <span class="string">&quot;z&quot;</span>)</span><br><span class="line">      osascript -e <span class="string">&#x27;tell application &quot;System Events&quot; to keystroke &quot;z&quot;&#x27;</span></span><br><span class="line">      ;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;A&quot;</span>)</span><br><span class="line">      osascript -e <span class="string">&#x27;tell application &quot;System Events&quot; to keystroke &quot;A&quot;&#x27;</span></span><br><span class="line">      ;;</span><br><span class="line">    <span class="string">&quot;Z&quot;</span>)</span><br><span class="line">      osascript -e <span class="string">&#x27;tell application &quot;System Events&quot; to keystroke &quot;Z&quot;&#x27;</span></span><br><span class="line">      ;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    $<span class="string">&#x27;\t&#x27;</span>)</span><br><span class="line">      osascript -e <span class="string">&#x27;tell application &quot;System Events&quot; to keystroke tab&#x27;</span></span><br><span class="line">      ;;</span><br><span class="line">    <span class="string">&quot; &quot;</span>)</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;space&quot;</span></span><br><span class="line">    osascript -e <span class="string">&#x27;tell application &quot;System Events&quot; to key code 49&#x27;</span></span><br><span class="line">    ;;</span><br><span class="line">    $<span class="string">&#x27;\x7f&#x27;</span>)</span><br><span class="line">      <span class="built_in">echo</span> <span class="string">&quot;backspace&quot;</span></span><br><span class="line">      osascript -e <span class="string">&#x27;tell application &quot;System Events&quot; to key code 51&#x27;</span></span><br><span class="line">      ;;</span><br><span class="line">    <span class="string">&quot;&quot;</span>)</span><br><span class="line">      <span class="built_in">echo</span> <span class="string">&quot;enter&quot;</span></span><br><span class="line">      osascript -e <span class="string">&#x27;tell application &quot;System Events&quot; to key code 36&#x27;</span></span><br><span class="line">      ;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    $<span class="string">&#x27;\x1b&#x27;</span>)</span><br><span class="line">      <span class="comment"># read next input char to confirm the key sequence</span></span><br><span class="line">      <span class="built_in">read</span> -rsn2 input2</span><br><span class="line"></span><br><span class="line">      <span class="keyword">case</span> <span class="string">&quot;<span class="variable">$input2</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line">        <span class="string">&quot;[A&quot;</span>)</span><br><span class="line">          <span class="built_in">echo</span> <span class="string">&quot;arrow up&quot;</span></span><br><span class="line">          ;;</span><br><span class="line">    <span class="keyword">esac</span></span><br><span class="line">    ;;</span><br><span class="line"></span><br><span class="line">    <span class="string">&quot;*&quot;</span>)</span><br><span class="line">      <span class="built_in">echo</span> <span class="string">&quot;invalid input&quot;</span></span><br><span class="line"></span><br><span class="line">      ;;</span><br><span class="line">  <span class="keyword">esac</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ssh/" rel="tag"># ssh</a>
+              <a href="/tags/keyboard/" rel="tag"># keyboard</a>
+              <a href="/tags/remote/" rel="tag"># remote</a>
+              <a href="/tags/osascript/" rel="tag"># osascript</a>
+              <a href="/tags/mac/" rel="tag"># mac</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/09/17/2023-09-16_three-repeated-mode-in-Emacs-orgMode/" rel="prev" title="three repeated mode in Emacs orgMode">
+                  <i class="fa fa-chevron-left"></i> three repeated mode in Emacs orgMode
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/10/30/2023-10-30_a-very-junior-advanced-mathematics-notes/" rel="next" title="a very junior advanced mathematics notes">
+                  a very junior advanced mathematics notes <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">organicCola</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"neutral","dark":"default"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/9.1.3/mermaid.min.js","integrity":"sha256-TIYL00Rhw/8WaoUhYTLX9SKIEFdXxg+yMWSLVUbhiLg="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
